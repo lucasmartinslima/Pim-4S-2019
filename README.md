@@ -22,7 +22,7 @@ COMANDO: *SET GLOBAL time_zone = '+4:00';
 |   veiculos    |     GET       |            a      |
 | Content Cell  | Content Cell  |            s      |
 
-| First Header  | METHOD |
+| ENDPOINT  | METHOD |
 | ------------- | ------------- |
-| Content Cell  | Content Cell  |
+| veiculos  | Content Cell  |
 | Content Cell  | Content Cell  |
