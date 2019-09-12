@@ -18,6 +18,6 @@ COMANDO: *SET GLOBAL time_zone = '+4:00';
 
 
 | ENDPOINT      | METHOD        | Success Response |
-| ------------- | ------------- |                  |
-|  /veiculos    |     GET       |                  |
-| Content Cell  | Content Cell  |                  |
+| ------------- | ------------- |            s      |
+|  /veiculos    |     GET       |            a      |
+| Content Cell  | Content Cell  |            s      |
