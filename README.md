@@ -22,7 +22,7 @@ A api será acessada utilizando o Framework Jquery
 
 | ENDPOINT  | Method | Params | Describe |
 | --- | --- | --- | --- |
-| /veiculos | `GET` | abc | Retorna todos veículos |
+| /veiculos | `GET` | - | Retorna todos veículos |
 | /veiculos/:id | `GET` | id | Retorna apenas dado de um veículo |
-| /veiculo | `POST` | Veiculo | Registra um veículo |
-| /veiculo | `DELETE` | Veiculo | Remove um veículo |
+| /veiculo | `POST` | - | Registra um veículo |
+| /veiculo | `DELETE` | - | Remove um veículo |
