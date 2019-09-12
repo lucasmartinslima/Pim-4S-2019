@@ -12,3 +12,12 @@ https://dev.mysql.com/downloads/windows/installer/8.0.html
 Caso de erro na hora de executar o projeto no Eclipse, setar o horário no Server MySql.
 
 COMANDO: *SET GLOBAL time_zone = '+4:00'; 
+
+# API DO PROJETO - REST
+*API do projeto foiem Java utilizando o Framework Spring*
+
+
+| ENDPOINT | METHOD | Success Response |
+| ------------- | ------------- |
+| /veiculos  | GET  | 
+| Content Cell  | Content Cell  |
