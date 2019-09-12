@@ -14,9 +14,8 @@ Caso de erro na hora de executar o projeto no Eclipse, setar o horário no Serve
 COMANDO: *SET GLOBAL time_zone = '+4:00'; 
 
 # API REST - 1001 Frotas
-*API do projeto foiem Java utilizando o Framework Spring*
+*API do projeto foi feita em Java utilizando o Framework Spring, ela será consumida pelo framework Jquery(JavaScript);*
 
-A api será acessada utilizando o Framework Jquery
 
 ## Veiculos
 
