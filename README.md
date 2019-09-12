@@ -24,5 +24,5 @@ COMANDO: *SET GLOBAL time_zone = '+4:00';
 
 | ENDPOINT  | METHOD |
 | ------------- | ------------- |
-| /veiculos  | Content Cell  |
+| /veiculos | Content Cell  |
 | Content Cell  | Content Cell  |
