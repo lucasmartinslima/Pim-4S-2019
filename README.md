@@ -17,7 +17,7 @@ COMANDO: *SET GLOBAL time_zone = '+4:00';
 *API do projeto foiem Java utilizando o Framework Spring*
 
 
-| ENDPOINT      | METHOD        | Success Response |
+| ENDPOINT      | METHOD        | Success Response  |
 | ------------- | ------------- |            s      |
 |  /veiculos    |     GET       |            a      |
 | Content Cell  | Content Cell  |            s      |
