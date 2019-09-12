@@ -15,11 +15,12 @@ COMANDO: *SET GLOBAL time_zone = '+4:00';
 
 # API DO PROJETO - REST
 *API do projeto foiem Java utilizando o Framework Spring*
+A api será acessada utilizando o Framework Jquery
 
 ## Veiculos
 
-| ENDPOINT  | Method | Params | 
-| --- | --- | --- |
-| /veiculos | GET | abc |
-| /veiculos/:id | GET | id |
-| /veiculo | POST | Veiculo |
+| ENDPOINT  | Method | Params | Describe |
+| --- | --- | --- | --- |
+| /veiculos | GET | abc | Retorna todos veículos |
+| /veiculos/:id | GET | id | Retorna apenas dado de um veículo |
+| /veiculo | POST | Veiculo | Registra um veículo |
