@@ -17,7 +17,7 @@ COMANDO: *SET GLOBAL time_zone = '+4:00';
 *API do projeto foi feita em Java utilizando o Framework Spring, ela será consumida pelo framework Jquery(JavaScript);*
 
 
-## Veiculos
+## Veículos
 
 | ENDPOINT  | Method | Params | Describe |
 | --- | --- | --- | --- |
@@ -25,3 +25,13 @@ COMANDO: *SET GLOBAL time_zone = '+4:00';
 | /veiculos/:id | `GET` | id | Retorna apenas dado de um veículo |
 | /veiculo | `POST` | - | Registra um veículo |
 | /veiculo | `DELETE` | - | Remove um veículo |
+
+
+## Motorista
+
+| ENDPOINT  | Method | Params | Describe |
+| --- | --- | --- | --- |
+| /motoristas | `GET` | - | Retorna todos motoristas |
+| /motoristas/:id | `GET` | id | Retorna apenas dado de um motorista |
+| /motoristas | `POST` | - | Registra um motorista |
+| /motoristas | `DELETE` | - | Remove um motorista |
