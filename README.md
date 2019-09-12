@@ -22,3 +22,4 @@ COMANDO: *SET GLOBAL time_zone = '+4:00';
 | --- | --- | --- |
 | /veiculos | GET | abc |
 | /veiculos/:id | GET | id |
+| /veiculo | POST | Veiculo |
