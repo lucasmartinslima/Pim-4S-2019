@@ -19,7 +19,7 @@ COMANDO: *SET GLOBAL time_zone = '+4:00';
 
 | ENDPOINT      | METHOD        | Success Response  |
 | ------------- | ------------- |            s      |
-|  /veiculos    |     GET       |            a      |
+|   veiculos    |     GET       |            a      |
 | Content Cell  | Content Cell  |            s      |
 
 | First Header  | Second Header |
