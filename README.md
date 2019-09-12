@@ -21,3 +21,8 @@ COMANDO: *SET GLOBAL time_zone = '+4:00';
 | ------------- | ------------- |            s      |
 |  /veiculos    |     GET       |            a      |
 | Content Cell  | Content Cell  |            s      |
+
+| First Header  | Second Header |
+| ------------- | ------------- |
+| Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  |
