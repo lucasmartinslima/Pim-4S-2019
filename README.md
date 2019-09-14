@@ -34,9 +34,18 @@ COMANDO: *SET GLOBAL time_zone = '+4:00';
 | --- | --- | --- | --- |
 | /motoristas | `GET` | - | Retorna todos motoristas |
 | /motoristas/:id | `GET` | id | Retorna apenas dado de um motorista |
-| /motoristas | `POST` | - | Registra um motorista |
-| /motoristas | `DELETE` | - | Remove um motorista |
+| /motorista | `POST` | - | Registra um motorista |
+| /motorista | `DELETE` | - | Remove um motorista |
 
+
+## Motorista
+
+| ENDPOINT  | Method | Params | Describe |
+| --- | --- | --- | --- |
+| /viagens | `GET` | - | Retorna todas as viagens |
+| /viagens/:id | `GET` | id | Retorna apenas dado de uma viagem |
+| /viagem | `POST` | - | Registra uma viagem |
+| /viagem | `DELETE` | - | Remove uma viagem |
 
 ```javascript
 var teste = 'Testando'
