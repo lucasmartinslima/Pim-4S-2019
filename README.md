@@ -38,7 +38,7 @@ COMANDO: *SET GLOBAL time_zone = '+4:00';
 | /motorista | `DELETE` | - | Remove um motorista |
 
 
-## Motorista
+## Viagem
 
 | ENDPOINT  | Method | Params | Describe |
 | --- | --- | --- | --- |
