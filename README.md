@@ -36,3 +36,13 @@ COMANDO: *SET GLOBAL time_zone = '+4:00';
 | /motoristas/:id | `GET` | id | Retorna apenas dado de um motorista |
 | /motoristas | `POST` | - | Registra um motorista |
 | /motoristas | `DELETE` | - | Remove um motorista |
+
+
+```ruby
+require 'redcarpet'
+markdown = Redcarpet.new("Hello World!")
+puts markdown.to_html
+```
+
+
+
