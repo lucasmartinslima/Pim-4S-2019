@@ -57,5 +57,14 @@ var teste = 'Testando'
 console.log(teste)
 ```
 
+```json
+[
+{
+'id': 1,
+'nome': 'Lucas Martins de Lima'
+}
+]
+```
+
 
 
