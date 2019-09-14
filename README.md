@@ -58,13 +58,29 @@ console.log(teste)
 ```
 
 ```code
+//Veículos
 [
-{
-'id': 1,
-'nome': 'Lucas Martins de Lima'
-}
+  {
+    'id': 1,
+    'placa': 'ABC-4321',
+    'modelo': 'Fiat Uno',
+    'cor': 'branco',
+    'km': '12342'
+  }
 ]
 ```
 
+```code
+//Veículos
+[
+  {
+    'id': 1,
+    'placa': 'ABC-4321',
+    'modelo': 'Fiat Uno',
+    'cor': 'branco',
+    'km': '12342'
+  }
+]
+```
 
 
