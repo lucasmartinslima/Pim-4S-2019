@@ -25,6 +25,7 @@ COMANDO: *SET GLOBAL time_zone = '+4:00';
 | /veiculos/:id | `GET` | id | Retorna apenas dado de um veículo |
 | /veiculo | `POST` | - | Registra um veículo |
 | /veiculo | `DELETE` | - | Remove um veículo |
+| /veiculo | `UPDATE` | - | Atualiza um veículo |
 
 
 ## Motorista
