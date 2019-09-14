@@ -57,7 +57,7 @@ var teste = 'Testando'
 console.log(teste)
 ```
 
-```json
+```code
 [
 {
 'id': 1,
