@@ -38,10 +38,9 @@ COMANDO: *SET GLOBAL time_zone = '+4:00';
 | /motoristas | `DELETE` | - | Remove um motorista |
 
 
-```ruby
-require 'redcarpet'
-markdown = Redcarpet.new("Hello World!")
-puts markdown.to_html
+```javascript
+var teste = 'Testando'
+console.log(teste)
 ```
 
 
