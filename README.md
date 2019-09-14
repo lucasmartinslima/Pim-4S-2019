@@ -22,7 +22,7 @@ COMANDO: *SET GLOBAL time_zone = '+4:00';
 | ENDPOINT  | Method | Params | Describe |
 | --- | --- | --- | --- |
 | /veiculos | `GET` | - | Retorna todos veículos |
-| /veiculos/:id | `GET` | id | Retorna apenas dado de um veículo |
+| /veiculos/:id | `GET` | id | Retorna apenas dados de um veículo |
 | /veiculo | `POST` | - | Registra um veículo |
 | /veiculo | `DELETE` | - | Remove um veículo |
 | /veiculo | `UPDATE` | - | Atualiza um veículo |
@@ -33,7 +33,7 @@ COMANDO: *SET GLOBAL time_zone = '+4:00';
 | ENDPOINT  | Method | Params | Describe |
 | --- | --- | --- | --- |
 | /motoristas | `GET` | - | Retorna todos motoristas |
-| /motoristas/:id | `GET` | id | Retorna apenas dado de um motorista |
+| /motoristas/:id | `GET` | id | Retorna apenas dados de um motorista |
 | /motorista | `POST` | - | Registra um motorista |
 | /motorista | `DELETE` | - | Remove um motorista |
 
@@ -43,11 +43,16 @@ COMANDO: *SET GLOBAL time_zone = '+4:00';
 | ENDPOINT  | Method | Params | Describe |
 | --- | --- | --- | --- |
 | /viagens | `GET` | - | Retorna todas as viagens |
-| /viagens/:id | `GET` | id | Retorna apenas dado de uma viagem |
+| /viagens/:id | `GET` | id | Retorna apenas dados de uma viagem |
 | /viagem | `POST` | - | Registra uma viagem |
 | /viagem | `DELETE` | - | Remove uma viagem |
 
 ```javascript
+var teste = 'Testando'
+console.log(teste)
+```
+
+```php
 var teste = 'Testando'
 console.log(teste)
 ```
