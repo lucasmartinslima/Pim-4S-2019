@@ -1,4 +1,4 @@
-# Pim-4S-2019
+# PIM 4.2019 - Sistema gerenciador de frotas
 
 ### Eclipse IDE for Java EE Developers 
 Link pra baixar a IDE que está sendo usada no projeto
@@ -47,6 +47,11 @@ _Para acessar a api é necessario ser esse link localhost:8080/api/{endpoint}_
 | /viagens/:id | `GET` | id | Retorna apenas dados de uma viagem |
 | /viagem | `POST` | - | Registra uma viagem |
 | /viagem | `DELETE` | - | Remove uma viagem |
+| /viagem | `PUT` | - | Atualiza uma viagem/ou finaliza |
+
+
+
+
 
 ```javascript
 var teste = 'Testando'
