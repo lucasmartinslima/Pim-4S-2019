@@ -5,7 +5,8 @@ Link pra baixar a IDE que está sendo usada no projeto
 https://www.eclipse.org/downloads/packages/release/photon/r/eclipse-ide-java-ee-developers
 
 
-### MySQl Server 5.7.27  - Na hora de instalar escolher a versão correta
+### MySQl Server 5.7.27  
+__(Na hora de instalar escolher a versão correta__
 https://dev.mysql.com/downloads/windows/installer/8.0.html
 
 
