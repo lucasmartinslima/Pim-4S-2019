@@ -16,6 +16,7 @@ https://dev.mysql.com/downloads/windows/installer/8.0.html
 # API REST - 1001 Frotas
 *API do projeto foi feita em Java utilizando o Framework Spring, ela será consumida pelo framework Jquery(JavaScript);*
 
+_Para acessar a api é necessario ser esse link localhost:8080/api/{endpoint}_
 
 ## Veículos
 
@@ -25,7 +26,7 @@ https://dev.mysql.com/downloads/windows/installer/8.0.html
 | /veiculos/:id | `GET` | id | Retorna apenas dados de um veículo |
 | /veiculo | `POST` | - | Registra um veículo |
 | /veiculo | `DELETE` | - | Remove um veículo |
-| /veiculo | `UPDATE` | - | Atualiza um veículo |
+| /veiculo | `PUT` | - | Atualiza um veículo |
 
 
 ## Motorista
@@ -36,7 +37,7 @@ https://dev.mysql.com/downloads/windows/installer/8.0.html
 | /motoristas/:id | `GET` | id | Retorna apenas dados de um motorista |
 | /motorista | `POST` | - | Registra um motorista |
 | /motorista | `DELETE` | - | Remove um motorista |
-
+| /motorista | `PUT` | - | Atualiza um motorista |
 
 ## Viagem
 
