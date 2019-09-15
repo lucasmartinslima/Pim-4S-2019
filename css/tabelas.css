@@ -1,16 +1,23 @@
 .campo-tabela{
-width: auto;
-height: auto;
-margin: 10%;
-margin-top: 0px;
-background-color: white;
-text-align: center;
+	width: auto;
+	height: auto;
+	margin: 10%;
+	margin-top: 0px;
+	padding-top: 0px;
+	background-color: white;
+	text-align: center;
+	border: 1.5px solid #0e97e6;
+	border-radius: 5px;
+
+	
+
+	position: relative;
 }
 
 .ind{
 	text-align: center;
 	font-size: 35px;
-	color: #9b9b9b;
+	color: #404040;
 }
 
 table {
@@ -19,19 +26,33 @@ table {
 	background-color: #ccc;
 	margin-left: 5%;
 	margin-top: 0px;
-	color: #8d8c8c;
-    border-collapse: collapse;  
- font-family: 'Titillium Web', sans-serif;
- font-weight: light;
-    font-size: 18px;
+	margin-bottom: 3%;
+	color: #636363;
+	border-collapse: collapse;  
+	font-family: 'Titillium Web', sans-serif;
+	font-weight: light;
+	font-size: 18px;
+
 }
 tr{
-		border: 2px solid #dddbdc;
+	border: 2px solid #dddbdc;
 	background-color: #dddbdc;
 }
 thead{
-background-color: white;
+	background-color: white;
 }
 td{
 	background-color: #ebebeb;
+}
+
+
+
+
+.desc{
+	text-align: left;
+	font-weight:lighter;
+	font-size: 16px;
+	padding: 0px;
+	margin-left: 5%;
+
 }

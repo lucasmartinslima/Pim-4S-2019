@@ -2,177 +2,129 @@
 <html lang="pt-br">
 <head>
 
- <title>Pim menu</title>
- <meta charset="utf-8" />
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Pim menu</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
- <link rel="stylesheet" type="text/css" href="css/dsi.css"/>
- <link rel="stylesheet" type="text/css" href="css/menu.css"/>
-  <link rel="stylesheet" type="text/css" href="css/tabelas.css"/>
-
- <link href="https://fonts.googleapis.com/css?family=Barlow&display=swap" rel="stylesheet">   
- <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/dsi.css"/>
+	<link rel="stylesheet" type="text/css" href="css/menu.css"/>
+	<link rel="stylesheet" type="text/css" href="css/tabelas.css"/>
 
 
-<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Barlow&display=swap" rel="stylesheet">   
+	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap" rel="stylesheet">
+
+
+	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 
 </head>
-<body>
+<body onload="carregarVeiculos();">
 
-  <div class="cabecalho">
-   <div class="row">
-     <div class="col-5" > <br> </div> 
-     <div class="col-2">
+	<div class="cabecalho">
+		<div class="row">
+			<div class="col-5" > <br> </div> 
+			<div class="col-2">
 
-      <img src="img/logo.png" class="lg-img">
+				<img src="img/logo.png" class="lg-img">
 
-    </div> 
-    <div class="col-3"> <br> </div> 
-    <div class="col-2  account"> 
-     <div class="acc"> Lucas Martins</div>
-    </div> 
-  </div>
-</div>
-
-
-<div class="row">
-
-  <div class="col-4 menu">
-    <div><img class="img-menu" src="teste.png"></div>
-    <a href="#"> Veículos </a>
-  </div>
-
-  <div class="col-4 menu">   
-    <div><img class="img-menu" src="teste.png"></div>
-    <a href="#">  Motoristas</a>
-  </div>
-
-  
-  <div class="col-4 menu">       
-    <div><img class="img-menu" src="teste.png"></div>
-    <a href="#">  Viagens</a>
-  </div>
+			</div> 
+			<div class="col-3"> <br> </div> 
+			<div class="col-2  account"> 
+				<div class="acc"> Lucas Martins</div>
+			</div> 
+		</div>
+	</div>
 
 
-</div>
+	<div class="row">
+
+		<div class="col-4 menu">
+			<div><img class="img-menu" src="teste.png"></div>
+			<a href="#"> Veículos </a>
+		</div>
+
+		<div class="col-4 menu">   
+			<div><img class="img-menu" src="teste.png"></div>
+			<a href="#">  Motoristas</a>
+		</div>
+
+
+		<div class="col-4 menu">       
+			<div><img class="img-menu" src="teste.png"></div>
+			<a href="#">  Viagens</a>
+		</div>
+
+
+	</div>
 
 
 	<h1 class="ind">VEÍCULOS</h1>
 
-<div id="app">
+	<div id="vueVeiculos">
+		<div class="campo-tabela" id="listarVeiculos">
+			<h2 class="desc">Todos os veículos registrados serão mostrados abaixo.  </h2>
+			<table>
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Modelo</th>
+						<th>Placa do veículo</th>
+						<th>Tipo</th>
+						<th>Cor</th>
+						<th>Disponibilidade</th>
 
-<div class="campo-tabela">
+						<th><br></th>
+						<th><br></th>
+					</tr>
+				</thead>
 
-   <table>
-        <thead>
-          <tr>
-              <th>Id</th>
-              <th>Modelo</th>
-              <th>Placa do veículo</th>
-          </tr>
-        </thead>
-
-        <tbody class="semBorda">
-         
-          <tr v-for="dado in dados">
-            <td>{{ dado.id }}  </td>
-            <td>{{ dado.nome }}  </td>
-            <td>{{ dado.placa }}  </td>
-            <td> <a @click="say(dado.id)">teste</a>  </td>
-          </tr>
-        
-        </tbody>
-      </table>
-
-</div>
+				<tbody class="semBorda">
 
 
-</div>
+					<tr v-if="selecao === '' || dado.nome ===''" v-for="dado in dados">
+						<td>{{ dado.id }}  </td>
+						<td>{{ dado.nome }}  </td>
+						<td>{{ dado.placa }}  </td>
 
-<div id="a">SSSSSSSSSSSSSSSSSSs</div>
+						<td v-if="dado.tipo === 1"> Moto </td>
+						<td v-if="dado.tipo === 2"> Carro </td>
+						<td v-if="dado.tipo === 3"> Caminhão </td>
+						<td v-if="dado.tipo === 4"> Van </td>
 
+						<td>{{ dado.cor }} </td>
 
-<div id="b">Save to thew fdata</div>
+						<td v-if="dado.disponibilidade === '1'">Disponível</td>
+						<td v-if="dado.disponibilidade === '2'">Indisponível</td>
+						<td v-if="dado.disponibilidade === '3'">Alugado</td>
 
+						<td> <a @click="say(dado.id)">Editar</a>  </td>
+						<td> <a @click="say(dado.id)">🚽</a>  </td>
+					</tr>
 
-<p></p>
+				</tbody>
+			</table>
 
+		</div>
 
-            
+		<div class="campo-tabela" id="regVeiculos">
+			<div class="reg">
+				
+				<br>
+			</div>
 
-<script type="text/javascript">
-	
+		</div>
 
-var app = new Vue({
-  el: '#app',
-  data: {
-    dados: null,
+	</div>
 
-  },
-  methods: {
- 	  say: function (id) {
-      alert('Voce quer excluir o item com o id: '+id+'???')
-   	 }
-  }
-})
-
-var btn = document.getElementById('a');
-btn.addEventListener('click', function(){
-
-	$.get("http://localhost:8080/api/veiculos", function(dado){
-
-app.dados = dado;
-console.log(dado)
-})
-})
-
+	<div id="a">REcarregar para teste</div>
+	<div id="b">Salvar novos dados</div>
 
 
-
-var btn = document.getElementById('b');
-btn.addEventListener('click', function(){
-
-var data2 = {
-nome: 'cqaroo',
-placa: 'abbbbbbbbbbbbbbbbbbb'
-
-}
-
-var dataW = JSON.stringify(data2);
-
-
-  $.ajax({
-                type: "post",
-                dataType: "json",
-                url: "http://localhost:8080/api/veiculo",
-                contentType: "application/json",
-                data: JSON.stringify(data2),
-                success: function(data, textStatus){
-                    alert("Data: " + data2 + "\nStatus: " + status); 
-                }
-            });
-
-
-
-
-
-
-
-})
-
-
-
-
-
-
-
-
-
-
-</script>
+	<script type="text/javascript" src="scripts/http-request.js"></script>
+	<script type="text/javascript" src="scripts/VeiculosPage.js"></script>
 
 
 
