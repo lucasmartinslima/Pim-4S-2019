@@ -29,6 +29,20 @@ _Para acessar a api é necessario ser esse link localhost:8080/api/{endpoint}_
 | /veiculo | `PUT` | - | Atualiza um veículo |
 
 
+**Objeto que será feito para salvar, editar e excluir dados no banco.**
+```code
+//Veículos
+ {
+    "id": 5,
+    "nome": "Palio Fiat",
+    "tipo": 0,
+    "placa": "485dasd5",
+    "cor": null,
+    "disponibilidade": "1"
+  }
+```
+
+
 ## Motorista
 
 | ENDPOINT  | Method | Params | Describe |
@@ -38,6 +52,23 @@ _Para acessar a api é necessario ser esse link localhost:8080/api/{endpoint}_
 | /motorista | `POST` | - | Registra um motorista |
 | /motorista | `DELETE` | - | Remove um motorista |
 | /motorista | `PUT` | - | Atualiza um motorista |
+
+
+**Objeto que será feito para salvar, editar e excluir dados no banco.**
+```code
+//Motoristas
+  {
+    "id": 20,
+    "nome": "Lucas Martins de Lima",
+    "cpf": "4225815688",
+    "cnh": "16549653",
+    "venc_cnh": "27/12/2025",
+    "cel": "991471256",
+    "disponibilidade": "1"
+  }
+```
+
+
 
 ## Viagem
 
@@ -58,35 +89,8 @@ var teste = 'Testando'
 console.log(teste)
 ```
 
-```php
-var teste = 'Testando'
-console.log(teste)
-```
 
-```code
-//Veículos
-[
-  {
-    'id': 1,
-    'placa': 'ABC-4321',
-    'modelo': 'Fiat Uno',
-    'cor': 'branco',
-    'km': '12342'
-  }
-]
-```
 
-```code
-//Veículos
-[
-  {
-    'id': 1,
-    'placa': 'ABC-4321',
-    'modelo': 'Fiat Uno',
-    'cor': 'branco',
-    'km': '12342'
-  }
-]
-```
+
 
 
