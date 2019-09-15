@@ -1,0 +1,37 @@
+.campo-tabela{
+width: auto;
+height: auto;
+margin: 10%;
+margin-top: 0px;
+background-color: white;
+text-align: center;
+}
+
+.ind{
+	text-align: center;
+	font-size: 35px;
+	color: #9b9b9b;
+}
+
+table {
+
+	width: 90%;
+	background-color: #ccc;
+	margin-left: 5%;
+	margin-top: 0px;
+	color: #8d8c8c;
+    border-collapse: collapse;  
+ font-family: 'Titillium Web', sans-serif;
+ font-weight: light;
+    font-size: 18px;
+}
+tr{
+		border: 2px solid #dddbdc;
+	background-color: #dddbdc;
+}
+thead{
+background-color: white;
+}
+td{
+	background-color: #ebebeb;
+}

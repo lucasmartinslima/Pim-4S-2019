@@ -5,12 +5,19 @@
  <title>Pim menu</title>
  <meta charset="utf-8" />
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
  <link rel="stylesheet" type="text/css" href="css/dsi.css"/>
+ <link rel="stylesheet" type="text/css" href="css/menu.css"/>
+  <link rel="stylesheet" type="text/css" href="css/tabelas.css"/>
 
  <link href="https://fonts.googleapis.com/css?family=Barlow&display=swap" rel="stylesheet">   
  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap" rel="stylesheet">
 
- <link rel="stylesheet" type="text/css" href="css/menu.css"/>
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
 
 </head>
 <body>
@@ -20,7 +27,7 @@
      <div class="col-5" > <br> </div> 
      <div class="col-2">
 
-      <img src="logo.png" class="lg-img">
+      <img src="img/logo.png" class="lg-img">
 
     </div> 
     <div class="col-3"> <br> </div> 
@@ -33,63 +40,140 @@
 
 <div class="row">
 
-  <div class="col-1 menu">
+  <div class="col-4 menu">
     <div><img class="img-menu" src="teste.png"></div>
     <a href="#"> Veículos </a>
   </div>
 
-  <div class="col-1 menu">   
+  <div class="col-4 menu">   
     <div><img class="img-menu" src="teste.png"></div>
     <a href="#">  Motoristas</a>
   </div>
 
-  <div class="col-1 menu"> 
-    <div><img class="img-menu" src="teste.png"></div>
-    <a href="#">  Entrada/Saída</a>
-  </div>
-
-  <div class="col-1 menu">       
+  
+  <div class="col-4 menu">       
     <div><img class="img-menu" src="teste.png"></div>
     <a href="#">  Viagens</a>
   </div>
 
-  <div class="col-1 menu">     
-    <div><img class="img-menu" src="teste.png"></div>
-    <a href="#"> 	Manutenções 	</a>
-  </div>
-
-  <div class="col-1 menu">      
-    <div><img class="img-menu" src="teste.png"></div>
-    <a href="#">	Finanças	</a>
-  </div>
-
-  <div class="col-1 menu">
-
-    <div><img class="img-menu" src="teste.png"></div>
-    <a href="#">	Abastecimento 	</a>
-  </div>
-
-  <div class="col-1 menu">     
-    <div><img class="img-menu" src="teste.png"></div>
-    <a href="#">	Avisos 		</a>
-  </div>
-
-  <div class="col-1 menu">      
-    <div><img class="img-menu" src="teste.png"></div>
-    <a href="#">	Multas 		</a>
-  </div>
-
-  <div class="col-1 menu">      
-    <div><img class="img-menu" src="teste.png"></div>
-    <a href="#">	Seguros 	</a>
-  </div>
-
-  <div class="col-1 menu">
-    <div><img class="img-menu" src="teste.png"></div>
-    <a href="#"> 	Relatórios 	</a>
-  </div>
 
 </div>
+
+
+	<h1 class="ind">VEÍCULOS</h1>
+
+<div id="app">
+
+<div class="campo-tabela">
+
+   <table>
+        <thead>
+          <tr>
+              <th>Id</th>
+              <th>Modelo</th>
+              <th>Placa do veículo</th>
+          </tr>
+        </thead>
+
+        <tbody class="semBorda">
+         
+          <tr v-for="dado in dados">
+            <td>{{ dado.id }}  </td>
+            <td>{{ dado.nome }}  </td>
+            <td>{{ dado.placa }}  </td>
+            <td> <a @click="say(dado.id)">teste</a>  </td>
+          </tr>
+        
+        </tbody>
+      </table>
+
+</div>
+
+
+</div>
+
+<div id="a">SSSSSSSSSSSSSSSSSSs</div>
+
+
+<div id="b">Save to thew fdata</div>
+
+
+<p></p>
+
+
+            
+
+<script type="text/javascript">
+	
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    dados: null,
+
+  },
+  methods: {
+ 	  say: function (id) {
+      alert('Voce quer excluir o item com o id: '+id+'???')
+   	 }
+  }
+})
+
+var btn = document.getElementById('a');
+btn.addEventListener('click', function(){
+
+	$.get("http://localhost:8080/api/veiculos", function(dado){
+
+app.dados = dado;
+console.log(dado)
+})
+})
+
+
+
+
+var btn = document.getElementById('b');
+btn.addEventListener('click', function(){
+
+var data2 = {
+nome: 'cqaroo',
+placa: 'abbbbbbbbbbbbbbbbbbb'
+
+}
+
+var dataW = JSON.stringify(data2);
+
+
+  $.ajax({
+                type: "post",
+                dataType: "json",
+                url: "http://localhost:8080/api/veiculo",
+                contentType: "application/json",
+                data: JSON.stringify(data2),
+                success: function(data, textStatus){
+                    alert("Data: " + data2 + "\nStatus: " + status); 
+                }
+            });
+
+
+
+
+
+
+
+})
+
+
+
+
+
+
+
+
+
+
+</script>
+
 
 
 
