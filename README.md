@@ -28,6 +28,7 @@ _Para acessar a api é necessario ser esse link localhost:8080/api/{endpoint}_
 | /veiculo | `DELETE` | - | Remove um veículo |
 | /veiculo | `PUT` | - | Atualiza um veículo |
 
+**Objeto que será feito para salvar, editar e excluir dados no banco.
 ```code
 //Veículos
 [
@@ -39,7 +40,6 @@ _Para acessar a api é necessario ser esse link localhost:8080/api/{endpoint}_
     "cor": null,
     "disponibilidade": "1"
   }
-]
 ```
 
 
@@ -55,7 +55,7 @@ _Para acessar a api é necessario ser esse link localhost:8080/api/{endpoint}_
 
 
 ```code
-//Motoristas[
+//Motoristas
   {
     "id": 20,
     "nome": "Lucas Martins de Lima",
@@ -65,7 +65,6 @@ _Para acessar a api é necessario ser esse link localhost:8080/api/{endpoint}_
     "cel": "991471256",
     "disponibilidade": "1"
   }
-]
 ```
 
 
