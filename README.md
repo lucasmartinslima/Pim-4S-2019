@@ -1,5 +1,7 @@
 # PIM 4.2019 - Sistema gerenciador de frotas
 
+Sistema de gerenciamento de frotas. Possui api construída em JAVA(Spring REST). Consumida com Jquery e Vue.js e com banco de dados MySql.
+
 ### Eclipse IDE for Java EE Developers 
 Link pra baixar a IDE que está sendo usada no projeto
 https://www.eclipse.org/downloads/packages/release/photon/r/eclipse-ide-java-ee-developers
