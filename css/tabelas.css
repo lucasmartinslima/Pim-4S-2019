@@ -63,13 +63,15 @@ td{
 	width: 80%;
 	height: auto;
 	margin: 10%;
-	margin-top: -600px;
+	margin-top: -80px;
 	padding-top: 0px;
 	background-color: white;
 	text-align: center;
 	border: 1.5px solid #0e97e6;
 	border-radius: 5px;
 	position: fixed;
+
+z-index: 2;
 
 	visibility: visible;
 }

@@ -63,7 +63,64 @@
 
 	<h1 class="ind" >VEÍCULOS</h1>
 
+	 
+
+
+
 	<div id="vueVeiculos">
+
+
+
+			<div class="modal" id="modal" >
+
+					<div class="closemodal"><div class="closeIcon" onclick="closeModal()">fechar</div></div>
+					
+										<div class="row">  
+											<div class="col-12">
+												<h2>Registrar Veículo</h2>
+											</div>	
+										</div>		
+					
+									<div class="reg">
+										<form class="regVeiculo">
+											<label>Modelo: </label>
+											<input type="text" placeholder="Ex: Gol, Voyage, Uno e etc." v-model="dadosVeiculo.nome">
+											<br><label>Tipo: </label>
+					
+					
+											<select v-model="dadosVeiculo.tipo" >
+												<option value=2 >Carro</option>
+												<option value=3>Caminhão</option>
+												<option value=1>Moto</option>
+												<option value=4>Van</option>
+											</select>
+					
+											<br>
+											<label>Placa: </label>
+											<input type="text" placeholder="Placa do veículo" v-model="dadosVeiculo.placa">
+											<br><label>Cor: </label>
+											<select v-model="dadosVeiculo.cor">
+													<option selected value="preto">Preto</option>
+													<option value="cinza">Cinza</option>
+													<option value="prata">Prata</option>
+													<option value="branco">Branco</option>
+											</select>
+					
+											<div class="btn-register" @click="salvarVeiculo()" onmouseout="vueVeiculos.carregarVeiculos()"><h4>REGISTRAR</h4></div>
+											
+										</form>
+									</div>
+								</div>
+
+
+
+
+
+
+
+
+
+
 		<div class="campo-tabela" id="listarVeiculos">
 			
 			<div class="row">
@@ -119,49 +176,11 @@
 		</div>
 
 
-		<br>
-			<div class="modal" id="modal" >
+	
 		
-<div class="closemodal"><div class="closeIcon" onclick="closeModal()">fechar</div></div>
-
-					<div class="row">  
-						<div class="col-12">
-							<h2>Registrar Veículo</h2>
-						</div>	
-					</div>		
-
-				<div class="reg">
-					<form class="regVeiculo">
-						<label>Modelo: </label>
-						<input type="text" placeholder="Ex: Gol, Voyage, Uno e etc." v-model="dadosVeiculo.nome">
-						<br><label>Tipo: </label>
-
-
-						<select v-model="dadosVeiculo.tipo" >
-							<option value=2 >Carro</option>
-							<option value=3>Caminhão</option>
-							<option value=1>Moto</option>
-							<option value=4>Van</option>
-						</select>
-
-						<br>
-						<label>Placa: </label>
-						<input type="text" placeholder="Placa do veículo" v-model="dadosVeiculo.placa">
-						<br><label>Cor: </label>
-						<select v-model="dadosVeiculo.cor">
-								<option selected value="preto">Preto</option>
-								<option value="cinza">Cinza</option>
-								<option value="prata">Prata</option>
-								<option value="branco">Branco</option>
-						</select>
-
-						<div class="btn-register" @click="salvarVeiculo()" onmouseout="vueVeiculos.carregarVeiculos()"><h4>REGISTRAR</h4></div>
-						
-					</form>
-				</div>
-			</div>
-
-		</div>
+			
+					</div>
+				
 
 
 	<script type="text/javascript" src="scripts/VeiculosPage.js"></script>
