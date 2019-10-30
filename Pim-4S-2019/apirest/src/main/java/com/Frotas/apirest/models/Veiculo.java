@@ -22,10 +22,18 @@ private String nome;
 private int tipo;    
 private String placa;
 private String cor;
-private boolean disponibilidade;
+private int disponibilidade;
 
 
 
+
+public int getDisponibilidade() {
+	return disponibilidade;
+}
+
+public void setDisponibilidade(int disponibilidade) {
+	this.disponibilidade = disponibilidade;
+}
 
 public int getTipo() {
 	return tipo;
@@ -43,13 +51,7 @@ public void setCor(String cor) {
 	this.cor = cor;
 }
 
-public boolean getDisponibilidade() {
-	return disponibilidade;
-}
 
-public void setDisponibilidade(boolean disponibilidade) {
-	this.disponibilidade = disponibilidade;
-}
 
 	public long getId() {
 		return id;

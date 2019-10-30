@@ -32,6 +32,7 @@ public class VeiculoResources {
 	}
 	
 	//Listar apenas 1 veiculo -- metodo GET
+	@CrossOrigin
 	@GetMapping("/veiculos/{id}")
 	public Veiculo listarVeiculoUnico(@PathVariable(value="id")long id){
 		return veiculoRepository.findById(id);
@@ -46,12 +47,14 @@ public class VeiculoResources {
 	}
 	
 	//DELETA VEICULO -- metodo DELETE
+	@CrossOrigin
 	@DeleteMapping("/veiculo")
 	public void deletaVeiculo(@RequestBody Veiculo veiculo) {
 	   veiculoRepository.delete(veiculo);
 	}
 	
 	//ATUALIZAR VEICULO -- metodo PUT
+	@CrossOrigin
 	@PutMapping("/veiculo")
 	public Veiculo atualizaVeiculo(@RequestBody Veiculo veiculo) {
 	   return veiculoRepository.save(veiculo);

@@ -21,7 +21,7 @@
 
 
 </head>
-<body onload="carregarVeiculos();">
+<body onload="inicializar()">
 
 	<div class="cabecalho">
 		<div class="row">
@@ -61,11 +61,19 @@
 	</div>
 
 
-	<h1 class="ind">VEÍCULOS</h1>
+	<h1 class="ind" >VEÍCULOS</h1>
 
 	<div id="vueVeiculos">
 		<div class="campo-tabela" id="listarVeiculos">
-			<h2 class="desc">Todos os veículos registrados serão mostrados abaixo.  </h2>
+			
+			<div class="row">
+				<div class="col-8"><input class="busca" type="text"></div>
+					
+				<div class="col-4"><div class="btn-register width-80" onclick="openModal()"><h4>REGISTRAR</h4></div></div>	
+			</div>
+			
+		
+
 			<table>
 				<thead>
 					<tr>
@@ -76,15 +84,16 @@
 						<th>Cor</th>
 						<th>Disponibilidade</th>
 
-						<th><br></th>
-						<th><br></th>
+						<th>Editar</th>
+						<th>Excluir</th>
+
 					</tr>
 				</thead>
 
 				<tbody class="semBorda">
 
 
-					<tr v-if="selecao === '' || dado.nome ===''" v-for="dado in dados">
+					<tr v-if="dado.disponibilidade !== 6" v-for="dado in dados">
 						<td>{{ dado.id }}  </td>
 						<td>{{ dado.nome }}  </td>
 						<td>{{ dado.placa }}  </td>
@@ -96,12 +105,12 @@
 
 						<td>{{ dado.cor }} </td>
 
-						<td v-if="dado.disponibilidade === '1'">Disponível</td>
-						<td v-if="dado.disponibilidade === '2'">Indisponível</td>
-						<td v-if="dado.disponibilidade === '3'">Alugado</td>
+						<td v-if="dado.disponibilidade === 1">Disponível</td>
+						<td v-if="dado.disponibilidade === 2">Indisponível</td>
+						<td v-if="dado.disponibilidade === 3">Alugado</td>
 
-						<td> <a @click="say(dado.id)">Editar</a>  </td>
-						<td> <a @click="say(dado.id)">🚽</a>  </td>
+						<td> <a @click="editar(dado.id)">Editar</a>  </td>
+						<td> <a @click="excluirVeiculo(dado.id)">🚽</a>  </td>
 					</tr>
 
 				</tbody>
@@ -109,21 +118,52 @@
 
 		</div>
 
-		<div class="campo-tabela" id="regVeiculos">
-			<div class="reg">
-				
-				<br>
+
+		<br>
+			<div class="modal" id="modal" >
+		
+<div class="closemodal"><div class="closeIcon" onclick="closeModal()">fechar</div></div>
+
+					<div class="row">  
+						<div class="col-12">
+							<h2>Registrar Veículo</h2>
+						</div>	
+					</div>		
+
+				<div class="reg">
+					<form class="regVeiculo">
+						<label>Modelo: </label>
+						<input type="text" placeholder="Ex: Gol, Voyage, Uno e etc." v-model="dadosVeiculo.nome">
+						<br><label>Tipo: </label>
+
+
+						<select v-model="dadosVeiculo.tipo" >
+							<option value=2 >Carro</option>
+							<option value=3>Caminhão</option>
+							<option value=1>Moto</option>
+							<option value=4>Van</option>
+						</select>
+
+						<br>
+						<label>Placa: </label>
+						<input type="text" placeholder="Placa do veículo" v-model="dadosVeiculo.placa">
+						<br><label>Cor: </label>
+						<select v-model="dadosVeiculo.cor">
+								<option selected value="preto">Preto</option>
+								<option value="cinza">Cinza</option>
+								<option value="prata">Prata</option>
+								<option value="branco">Branco</option>
+						</select>
+
+						<div class="btn-register" @click="salvarVeiculo()" onmouseout="vueVeiculos.carregarVeiculos()"><h4>REGISTRAR</h4></div>
+						
+					</form>
+				</div>
 			</div>
 
 		</div>
 
-	</div>
 
-	<div id="a">REcarregar para teste</div>
-	<div id="b">Salvar novos dados</div>
-
-
-	<script type="text/javascript" src="scripts/http-request.js"></script>
 	<script type="text/javascript" src="scripts/VeiculosPage.js"></script>
 
 

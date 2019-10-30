@@ -1,20 +1,121 @@
-function openCity(evt, cityName) {
-  // Declare all variables
-  var i, tabcontent, tablinks;
+var vueVeiculos = new Vue({
+  el: '#vueVeiculos',
+  data: {
+    dados: null,
+    selecao: '',
 
-  // Get all elements with class="tabcontent" and hide them
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
+    dadosVeiculo: {
+      nome: null,
+      tipo: null,
+      placa: null,
+      cor: null,
+      disponibilidade: 1
   }
+    
+  },
+  methods: {
 
-  // Get all elements with class="tablinks" and remove the class "active"
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
+    carregarVeiculos: function(){
+
+        $.get("http://localhost:5050/api/veiculos", function(dado){
+          vueVeiculos.dados = dado;
+          console.log(dado)
+        })  
+    },
+    salvarVeiculo: function(){
+
+    this.dadosVeiculo.tipo = Number(this.dadosVeiculo.tipo);
+
+      $.ajax({
+        type: "POST",
+        dataType: "json",
+        url: "http://localhost:5050/api/veiculo",
+        contentType: "application/json",
+        data: JSON.stringify(this.dadosVeiculo),
+        success: function(data, textStatus){
+          alert("Data: " + dataVeiculo + "\nStatus: " + status); 
+        }
+      });
+    },
+
+    excluirVeiculo: function(idExcluir){
+
+for(i=0;i<5;i++){
+if(this.dados[i].id == idExcluir){
+  veiculoExcluir = this.dados[i]
+  break;
+}
+}
+
+
+    
+      $.ajax({
+        type: "DELETE",
+        dataType: "json",
+        url: "http://localhost:5050/api/veiculo",
+        contentType: "application/json",
+        data: JSON.stringify(veiculoExcluir),
+        success: function(data, textStatus){
+          alert("Data: " + dataVeiculo + "\nStatus: " + status); 
+        }
+      });
+    }
   }
+})
 
-  // Show the current tab, and add an "active" class to the button that opened the tab
-  document.getElementById(cityName).style.display = "block";
-  evt.currentTarget.className += " active";
+
+
+
+function teste(){
+
+  var dadosVeiculo2 = {
+    id: 1,
+    nome: "teste",
+    tipo: 1,
+    placa: "abc-123",
+    cor: "preto",
+    disponibilidade: 1
+}
+
+
+    var dataVeiculo = JSON.stringify(dadosVeiculo2);
+    
+    
+    console.log(dataVeiculo)
+
+
+      $.ajax({
+        type: "POST",
+        dataType: "json",
+        url: "http://localhost:5050/api/veiculo",
+        contentType: "application/json",
+        data: JSON.stringify(dadosVeiculo2),
+        success: function(data, textStatus){
+          alert("Data: " + dataVeiculo + "\nStatus: " + status); 
+        }
+      });
+
+
+
+}
+
+
+function closeModal(){
+  var modal = document.getElementById('modal')
+  modal.style.visibility = "hidden";
+}
+
+function openModal(){
+  var modal = document.getElementById('modal')
+  modal.style.visibility = "visible";
+}
+
+
+
+
+function inicializar(){
+
+  vueVeiculos.carregarVeiculos()
+  closeModal()
+
 }

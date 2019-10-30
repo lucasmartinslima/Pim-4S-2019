@@ -32,6 +32,7 @@ public class MotoristaResources {
 	}
 	
 	//Listar apenas 1 motorista -- metodo GET
+	@CrossOrigin
 	@GetMapping("/motoristas/{id}")
 	public Motorista listarMotoristaUnico(@PathVariable(value="id")long id){
 		return motoristaRepository.findById(id);
@@ -41,17 +42,19 @@ public class MotoristaResources {
 	//REGISTRA UM MOTORISTA -- metodo post.
 	@CrossOrigin 
 	@PostMapping("/motorista")
-public 	Motorista salvaVeiculo(@RequestBody Motorista motorista) {
+    public	Motorista salvaVeiculo(@RequestBody Motorista motorista) {
 		return motoristaRepository.save(motorista);
 	}
 	
 	//DELETA MOTORISTA -- metodo DELETE
+	@CrossOrigin
 	@DeleteMapping("/motorista")
 	public void deletaVeiculo(@RequestBody Motorista motorista) {
 		motoristaRepository.delete(motorista);
 	}
 	
 	//ATUALIZAR MOTORISTA -- metodo PUT
+	@CrossOrigin
 	@PutMapping("/motorista")
 	public Motorista atualizaVeiculo(@RequestBody Motorista motorista) {
 	   return motoristaRepository.save(motorista);

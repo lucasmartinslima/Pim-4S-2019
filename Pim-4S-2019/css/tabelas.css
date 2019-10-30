@@ -9,8 +9,6 @@
 	border: 1.5px solid #0e97e6;
 	border-radius: 5px;
 
-	
-
 	position: relative;
 }
 
@@ -47,12 +45,85 @@ td{
 
 
 
-
-.desc{
+.busca{
 	text-align: left;
-	font-weight:lighter;
-	font-size: 16px;
-	padding: 0px;
-	margin-left: 5%;
+	font-weight: lighter;
+	font-size: 27px;
+	padding: 10px 5%;
+	margin-top: 42px;
+	width: 100%;
+	
+}
 
+
+
+
+
+.modal{
+	width: 80%;
+	height: auto;
+	margin: 10%;
+	margin-top: -600px;
+	padding-top: 0px;
+	background-color: white;
+	text-align: center;
+	border: 1.5px solid #0e97e6;
+	border-radius: 5px;
+	position: fixed;
+
+	visibility: visible;
+}
+.closemodal{
+	background-color: #0e97e6;
+	height: 40px;
+}
+
+.closeIcon{
+	float: right;
+}
+
+
+h2{
+	color: #404040;
+}
+
+
+.width-80{
+
+	width: 80%;
+	
+}
+
+.btn-register{
+	
+		background-color: #4CAF50; /* Green */
+		border: none;
+		color: white;
+		padding: 5px 70px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		margin: 40px 2px;
+		cursor: pointer;
+		border-radius: 4px;
+	  
+}
+.btn-register h4{
+ margin-top: 15px;
+}
+
+
+
+
+
+
+
+.regVeiculo input{
+	max-width: 85%;
+    margin: 35px 14px;
+}
+
+.regVeiculo select{
+	max-width: 85%;
+    margin: 35px 14px;
 }

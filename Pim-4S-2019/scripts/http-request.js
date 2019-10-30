@@ -15,7 +15,7 @@ var vueVeiculos = new Vue({
 
 // RETORNARA UM ARRAY DE JSON DOS VEICULOS
 function carregarVeiculos(){
-  $.get("http://localhost:8080/api/veiculos", function(dado){
+  $.get("http://localhost:5050/api/veiculos", function(dado){
     vueVeiculos.dados = dado;
     console.log(dado)
   })  

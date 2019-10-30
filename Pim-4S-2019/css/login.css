@@ -1,0 +1,116 @@
+#frota_div{
+    background-color: white;
+    
+
+
+}
+
+
+
+#ft{
+    color: blue;
+    
+}
+
+body{
+    padding: 0;
+    margin: 0;
+    background: url('../img/bg-login.jpg') no-repeat center center fixed ;
+    background-size: 100%;
+    -webkit-background: cover;
+    background-color: #ebebeb;
+    font-family: 'Cairo', sans-serif;
+
+    
+}
+
+#input{
+    background-color: #f2f2f2;
+    border: 3px solid #d9d9d9;
+    border-radius: 3px;
+    width: 100%;
+    padding: 10px;
+    font-size:20px;
+    margin-top: 10px;
+    
+}
+
+.logo{
+    width:130;
+    height:50px;
+}
+
+.form-login{
+    background-color: white;
+    width: 460px;
+    height: 600x;
+    /* border-radius: 10px; */
+    left: 53px;
+    margin: -130px 0 0 -210;
+    padding: 10px;
+    position: center;
+    top: 50%;
+    margin-top: 80px;
+}
+
+
+footer {
+    background-color: rgb(65, 144, 218);
+    position:absolute;
+    bottom:0px;
+    height: 10%;
+    width:100%;
+    text-align: center;
+    padding-top: 20px;
+    font-variant-position: normal;
+} 
+
+.button {
+    background-color: rgb(65, 144, 218);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 100%;
+    font-size: 20px;
+  }
+
+.button2 {
+    background-color: white;
+    border: none;
+    color: rgb(65, 144, 218);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border: 2px solid rgb(65, 144, 218);
+    width: 100%;
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+
+.row1{
+    margin-top: 20px;
+}
+
+#pa{
+    color: white;
+    margin-top: 20px;
+}
+
+/* #email::-webkit-input-placeholder{
+        color:#C4C;
+        background-color: #4C4;
+        text-transform: uppercase;
+        font-style: bold;
+}
+#email::-moz-placeholder {
+        color:#C4C;
+        background-color: #4C4;
+        text-transform: uppercase;
+        font-style: bold;
+}​ */
