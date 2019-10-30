@@ -1,0 +1,60 @@
+html,body{ margin: 0; padding: 0; 
+	background-color: #ebebeb;
+	font-family: 'Roboto', sans-serif;
+
+}
+
+.menu{
+	text-align: center;
+	background-color: white;
+	border: solid 1.1px #dfdfdf;
+	height: 90px;
+}
+
+.menu:hover{
+	border-bottom: solid 4px #8cb8f6;
+	cursor: pointer;
+}
+
+a{
+	text-decoration: none;
+	font-family: 'Roboto', sans-serif;
+
+	color: #646464;
+}
+
+
+
+.cabecalho{
+	background-color: white;
+}
+
+
+.img-menu{
+	width: 40px;
+	margin-top: 10px;
+}
+
+
+.account{
+	text-align: center;
+	background-color: #e9e7e8;
+	height: 49.87px;
+}.acc{
+	margin-top: 15px;
+}
+
+
+.lg{
+	list-style: none;
+	display: block;
+}
+
+.lg-img{
+	width: 160px;
+	margin: 7px;
+}
+
+h1{
+	font-size: 14px;
+}

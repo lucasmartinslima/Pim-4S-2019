@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+	<title>Pim menu</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" type="text/css" href="css/dsi.css"/>
+	<link rel="stylesheet" type="text/css" href="css/menu.css"/>
+	<link rel="stylesheet" type="text/css" href="css/tabelas.css"/>
+
+
+	<link href="https://fonts.googleapis.com/css?family=Barlow&display=swap" rel="stylesheet">   
+	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap" rel="stylesheet">
+
+
+	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+</head>
+<body onload="carregarVeiculos();">
+
+	<div class="cabecalho">
+		<div class="row">
+			<div class="col-5" > <br> </div> 
+			<div class="col-2">
+
+				<img src="img/logo.png" class="lg-img">
+
+			</div> 
+			<div class="col-3"> <br> </div> 
+			<div class="col-2  account"> 
+				<div class="acc"> Lucas Martins</div>
+			</div> 
+		</div>
+	</div>
+
+
+	<div class="row">
+
+		<div class="col-4 menu">
+			<div><img class="img-menu" src="teste.png"></div>
+			<a href="#"> Veículos </a>
+		</div>
+
+		<div class="col-4 menu">   
+			<div><img class="img-menu" src="teste.png"></div>
+			<a href="#">  Motoristas</a>
+		</div>
+
+
+		<div class="col-4 menu">       
+			<div><img class="img-menu" src="teste.png"></div>
+			<a href="#">  Viagens</a>
+		</div>
+
+
+	</div>
+
+
+	<h1 class="ind">VEÍCULOS</h1>
+
+	<div id="vueVeiculos">
+		<div class="campo-tabela" id="listarVeiculos">
+			<h2 class="desc">Todos os veículos registrados serão mostrados abaixo.  </h2>
+			<table>
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Modelo</th>
+						<th>Placa do veículo</th>
+						<th>Tipo</th>
+						<th>Cor</th>
+						<th>Disponibilidade</th>
+
+						<th><br></th>
+						<th><br></th>
+					</tr>
+				</thead>
+
+				<tbody class="semBorda">
+
+
+					<tr v-if="selecao === '' || dado.nome ===''" v-for="dado in dados">
+						<td>{{ dado.id }}  </td>
+						<td>{{ dado.nome }}  </td>
+						<td>{{ dado.placa }}  </td>
+
+						<td v-if="dado.tipo === 1"> Moto </td>
+						<td v-if="dado.tipo === 2"> Carro </td>
+						<td v-if="dado.tipo === 3"> Caminhão </td>
+						<td v-if="dado.tipo === 4"> Van </td>
+
+						<td>{{ dado.cor }} </td>
+
+						<td v-if="dado.disponibilidade === '1'">Disponível</td>
+						<td v-if="dado.disponibilidade === '2'">Indisponível</td>
+						<td v-if="dado.disponibilidade === '3'">Alugado</td>
+
+						<td> <a @click="say(dado.id)">Editar</a>  </td>
+						<td> <a @click="say(dado.id)">🚽</a>  </td>
+					</tr>
+
+				</tbody>
+			</table>
+
+		</div>
+
+		<div class="campo-tabela" id="regVeiculos">
+			<div class="reg">
+				
+				<br>
+			</div>
+
+		</div>
+
+	</div>
+
+	<div id="a">REcarregar para teste</div>
+	<div id="b">Salvar novos dados</div>
+
+
+	<script type="text/javascript" src="scripts/http-request.js"></script>
+	<script type="text/javascript" src="scripts/VeiculosPage.js"></script>
+
+
+
+
+</body>
+</html>
