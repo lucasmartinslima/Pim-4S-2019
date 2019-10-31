@@ -63,7 +63,7 @@ td{
 	width: 80%;
 	height: auto;
 	margin: 10%;
-	margin-top: -80px;
+	margin-top: -15%;
 	padding-top: 0px;
 	background-color: white;
 	text-align: center;
@@ -71,7 +71,7 @@ td{
 	border-radius: 5px;
 	position: fixed;
 
-z-index: 2;
+	z-index: 2;
 
 	visibility: visible;
 }
@@ -98,20 +98,20 @@ h2{
 
 .btn-register{
 	
-		background-color: #4CAF50; /* Green */
-		border: none;
-		color: white;
-		padding: 5px 70px;
-		text-align: center;
-		text-decoration: none;
-		display: inline-block;
-		margin: 40px 2px;
-		cursor: pointer;
-		border-radius: 4px;
-	  
+	background-color: #4CAF50; /* Green */
+	border: none;
+	color: white;
+	padding: 5px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	margin: 40px 2px;
+	cursor: pointer;
+	border-radius: 4px;
+
 }
 .btn-register h4{
- margin-top: 15px;
+	margin-top: 15px;
 }
 
 
@@ -122,10 +122,10 @@ h2{
 
 .regVeiculo input{
 	max-width: 85%;
-    margin: 35px 14px;
+	margin: 35px 14px;
 }
 
 .regVeiculo select{
 	max-width: 85%;
-    margin: 35px 14px;
+	margin: 35px 14px;
 }
