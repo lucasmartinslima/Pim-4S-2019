@@ -1,7 +1,7 @@
 var vueVeiculos = new Vue({
   el: '#vueVeiculos',
   data: {
-    //dados: null,    // AO USAR A API DESCOMENTAR ESSA LINHA
+    dados: null,    // AO USAR A API DESCOMENTAR ESSA LINHA
     selecao: '',
     dadosVeiculo: {
       nome: null,
@@ -12,7 +12,7 @@ var vueVeiculos = new Vue({
     },
     
 //Array de objeto para teste, caso não tenha a api funcionando, caso tenha a api favor descomentar 'dados' de cima
-    dados: [
+ /*   dados: [
     {id: 1, nome: 'Carro 1',tipo: 1,placa: 'null',cor: 'cinza',disponibilidade: 1},
     {id: 2, nome: 'Carro 2',tipo: 1,placa: 'null',cor: 'cinza',disponibilidade: 1},
     {id: 3, nome: 'Carro 3',tipo: 1,placa: 'null',cor: 'cinza',disponibilidade: 1},
@@ -20,7 +20,7 @@ var vueVeiculos = new Vue({
     {id: 4, nome: 'Carro 4',tipo: 1,placa: 'null',cor: 'cinza',disponibilidade: 1},
     {id: 4, nome: 'Carro 4',tipo: 1,placa: 'null',cor: 'cinza',disponibilidade: 1},
     {id: 4, nome: 'Carro 4',tipo: 1,placa: 'null',cor: 'cinza',disponibilidade: 1}],
-
+*/
     modalTitle: 'Registrar'
 
   },
