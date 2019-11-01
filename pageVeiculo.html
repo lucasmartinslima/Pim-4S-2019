@@ -170,8 +170,8 @@
 						<td v-if="dado.disponibilidade === 2">Indisponível</td>
 						<td v-if="dado.disponibilidade === 3">Alugado</td>
 
-						<td> <a @click="editarVeiculo(dado.id)">Editar</a>  </td>
-						<td> <a @click="excluirVeiculo(dado.id)" onclick="setTimeout(vueVeiculos.carregarVeiculos, 250);">Excluir</a>  </td>
+						<td> <img src="icons/editar.png" class="tbIcon" @click="editarVeiculo(dado.id)"></td>
+						<td> <img src="icons/excluir.png" class="tbIcon" @click="excluirVeiculo(dado.id)" onclick="setTimeout(vueVeiculos.carregarVeiculos, 250);">  </td>
 					</tr>
 
 				</tbody>
