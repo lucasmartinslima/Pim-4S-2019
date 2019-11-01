@@ -11,7 +11,7 @@ var vueVeiculos = new Vue({
       disponibilidade: 1
     },
     
-    // Array de objeto para teste, caso não tenha a api funcionando
+//Array de objeto para teste, caso não tenha a api funcionando, caso tenha a api favor descomentar dados de cima
     dados: [
     {id: 1, nome: 'Carro 1',tipo: 1,placa: 'null',cor: 'cinza',disponibilidade: 1},
     {id: 2, nome: 'Carro 2',tipo: 1,placa: 'null',cor: 'cinza',disponibilidade: 1},
@@ -19,11 +19,9 @@ var vueVeiculos = new Vue({
     {id: 4, nome: 'Carro 4',tipo: 1,placa: 'null',cor: 'cinza',disponibilidade: 1},
     {id: 4, nome: 'Carro 4',tipo: 1,placa: 'null',cor: 'cinza',disponibilidade: 1},
     {id: 4, nome: 'Carro 4',tipo: 1,placa: 'null',cor: 'cinza',disponibilidade: 1},
-    {id: 4, nome: 'Carro 4',tipo: 1,placa: 'null',cor: 'cinza',disponibilidade: 1}]
- 
+    {id: 4, nome: 'Carro 4',tipo: 1,placa: 'null',cor: 'cinza',disponibilidade: 1}],
 
-
-
+    modalTitle: 'Registrar'
 
   },
   methods: {
@@ -37,6 +35,8 @@ var vueVeiculos = new Vue({
     },
 
     editarVeiculo: function(idEditar){
+
+
       var veiculoEditar =null;
       console.log(idEditar)
       for(i=0;i<5;i++){
@@ -116,11 +116,17 @@ var vueVeiculos = new Vue({
 function closeModal(){
   var modal = document.getElementById('modal')
   modal.style.visibility = "hidden";
+
+  var backModal = document.getElementById('backModal')
+  backModal.style.visibility = "hidden";
 }
 
 function openModal(){
   var modal = document.getElementById('modal')
   modal.style.visibility = "visible";
+
+  var backModal = document.getElementById('backModal')
+  backModal.style.visibility = "visible";
 }
 
 function inicializar(){

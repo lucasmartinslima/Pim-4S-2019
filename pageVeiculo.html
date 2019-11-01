@@ -23,6 +23,8 @@
 </head>
 <body onload="inicializar()">
 
+	<div class="backModal" id="backModal" onclick="closeModal()"></div>
+
 	<div class="cabecalho">
 		<div class="row">
 
@@ -74,6 +76,7 @@
 	<div id="vueVeiculos"> <!--=================== TABELA E VUE JS ===================== -->
 
 
+
 		<div class="modal" id="modal">
 			<div class="closemodal">
 				<img src="icons/close.png" class="closeIcon" onclick="closeModal()">
@@ -81,7 +84,7 @@
 
 			<div class="row">  
 				<div class="col-12">
-					<h2>Registrar Veículo</h2>
+					<h2> {{modalTitle}} Veículo</h2>
 				</div>	
 			</div>		
 
@@ -168,7 +171,7 @@
 						<td v-if="dado.disponibilidade === 3">Alugado</td>
 
 						<td> <a @click="editarVeiculo(dado.id)">Editar</a>  </td>
-						<td> <a @click="excluirVeiculo(dado.id)" onclick="setTimeout(vueVeiculos.carregarVeiculos, 250)">Excluir</a>  </td>
+						<td> <a @click="excluirVeiculo(dado.id)" onclick="setTimeout(vueVeiculos.carregarVeiculos, 250);">Excluir</a>  </td>
 					</tr>
 
 				</tbody>

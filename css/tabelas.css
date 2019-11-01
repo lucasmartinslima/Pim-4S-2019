@@ -134,3 +134,16 @@ h2{
 	max-width: 50%;
 	margin: 10px 5px;
 }
+
+
+.backModal{
+	background-color: rgba(0,0,0,0.4);
+	height: 100%;
+	z-index: 1;
+	position: fixed;
+	width: 100%;
+	margin-top: 0px;
+
+	visibility: visible;
+	cursor: pointer;
+}
