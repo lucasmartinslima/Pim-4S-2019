@@ -63,7 +63,7 @@ td{
 	width: 80%;
 	height: auto;
 	margin: 10%;
-	margin-top: -15%;
+	margin-top: -8%;
 	padding-top: 0px;
 	background-color: white;
 	text-align: center;
@@ -121,11 +121,12 @@ h2{
 
 
 .regVeiculo input{
-	max-width: 85%;
-	margin: 35px 14px;
+	max-width: 50%;
+	margin: 10px 0px;
+	padding: 0px;
 }
 
 .regVeiculo select{
-	max-width: 85%;
-	margin: 35px 14px;
+	max-width: 50%;
+	margin: 10px 5px;
 }

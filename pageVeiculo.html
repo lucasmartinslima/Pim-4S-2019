@@ -81,7 +81,9 @@
 
 		<div class="modal" id="modal" >
 
-			<div class="closemodal"><div class="closeIcon" onclick="closeModal()">fechar</div></div>
+			<div class="closemodal">
+				<div class="closeIcon" onclick="closeModal()">fechar</div>
+			</div>
 
 			<div class="row">  
 				<div class="col-12">
@@ -91,9 +93,9 @@
 
 			<div class="reg">
 				<form class="regVeiculo">
-					<label>Modelo: </label>
+					<label>Modelo:</label>
 					<input type="text" placeholder="Ex: Gol, Voyage, Uno e etc." v-model="dadosVeiculo.nome">
-					<br><label>Tipo: </label>
+					<br><label>Tipo:</label>
 
 					<select v-model="dadosVeiculo.tipo" >
 						<option value=2 >Carro</option>
@@ -101,11 +103,12 @@
 						<option value=1>Moto</option>
 						<option value=4>Van</option>
 					</select>
-					
+
+				
 					<br>
-					<label>Placa: </label>
+					<label>Placa:</label>
 					<input type="text" placeholder="Placa do veículo" v-model="dadosVeiculo.placa">
-					<br><label>Cor: </label>
+					<br><label>Cor:</label>
 					<select v-model="dadosVeiculo.cor">
 						<option selected value="preto">Preto</option>
 						<option value="cinza">Cinza</option>
@@ -113,7 +116,10 @@
 						<option value="branco">Branco</option>
 					</select>
 					
-					<div class="btn-register" @click="salvarVeiculo();" onclick="setTimeout(inicializar, 250)"><h4>REGISTRAR</h4></div>
+					<br>
+					<div class="btn-register" @click="salvarVeiculo();" onclick="setTimeout(inicializar, 250)">
+						<h4>REGISTRAR</h4>
+					</div>
 
 				</form>
 			</div>
@@ -132,7 +138,7 @@
 				</div>	
 			</div>
 
-			<table>
+			<table style="overflow-x:auto">
 				<thead>
 					<tr>
 						<th>Id</th>
