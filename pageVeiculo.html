@@ -47,7 +47,7 @@
 	</div>
 
 
-	<div class="row">
+	<div class="row">  <!--=================== MENU ===================== -->
 
 		<div class="col-4 menu" style="border-bottom: solid 4px #2f7dcc;">
 			<div><img class="img-menu" src="icons/car.png"></div>
@@ -71,18 +71,12 @@
 
 	<h1 class="ind" >VEÍCULOS</h1>
 
+	<div id="vueVeiculos"> <!--=================== TABELA E VUE JS ===================== -->
 
 
-
-
-	<div id="vueVeiculos">
-
-
-
-		<div class="modal" id="modal" >
-
+		<div class="modal" id="modal">
 			<div class="closemodal">
-				<div class="closeIcon" onclick="closeModal()">fechar</div>
+				<img src="icons/close.png" class="closeIcon" onclick="closeModal()">
 			</div>
 
 			<div class="row">  
@@ -104,7 +98,7 @@
 						<option value=4>Van</option>
 					</select>
 
-				
+
 					<br>
 					<label>Placa:</label>
 					<input type="text" placeholder="Placa do veículo" v-model="dadosVeiculo.placa">
@@ -138,7 +132,7 @@
 				</div>	
 			</div>
 
-			<table style="overflow-x:auto">
+			<table style="overflow-x:auto;">
 				<thead>
 					<tr>
 						<th>Id</th>
@@ -179,21 +173,10 @@
 
 				</tbody>
 			</table>
-
 		</div>
 
-
-
-
-
 	</div>
-
-
-
 	<script type="text/javascript" src="scripts/VeiculosPage.js"></script>
-
-
-
 
 </body>
 </html>

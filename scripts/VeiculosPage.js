@@ -1,18 +1,30 @@
 var vueVeiculos = new Vue({
   el: '#vueVeiculos',
   data: {
-    dados: null,
+    //dados: null,
     selecao: '',
-    
-
     dadosVeiculo: {
       nome: null,
       tipo: null,
       placa: null,
       cor: null,
       disponibilidade: 1
-    }
+    },
     
+    // Array de objeto para teste, caso não tenha a api funcionando
+    dados: [
+    {id: 1, nome: 'Carro 1',tipo: 1,placa: 'null',cor: 'cinza',disponibilidade: 1},
+    {id: 2, nome: 'Carro 2',tipo: 1,placa: 'null',cor: 'cinza',disponibilidade: 1},
+    {id: 3, nome: 'Carro 3',tipo: 1,placa: 'null',cor: 'cinza',disponibilidade: 1},
+    {id: 4, nome: 'Carro 4',tipo: 1,placa: 'null',cor: 'cinza',disponibilidade: 1},
+    {id: 4, nome: 'Carro 4',tipo: 1,placa: 'null',cor: 'cinza',disponibilidade: 1},
+    {id: 4, nome: 'Carro 4',tipo: 1,placa: 'null',cor: 'cinza',disponibilidade: 1},
+    {id: 4, nome: 'Carro 4',tipo: 1,placa: 'null',cor: 'cinza',disponibilidade: 1}]
+ 
+
+
+
+
   },
   methods: {
 
