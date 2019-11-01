@@ -119,6 +119,15 @@ function closeModal(){
 
   var backModal = document.getElementById('backModal')
   backModal.style.visibility = "hidden";
+
+
+      vueVeiculos.dadosVeiculo.nome = null
+      vueVeiculos.dadosVeiculo.tipo = null
+      vueVeiculos.dadosVeiculo.placa = null
+      vueVeiculos.dadosVeiculo.cor = null
+      vueVeiculos.dadosVeiculo.disponibilidade = 1
+
+
 }
 
 function openModal(){
