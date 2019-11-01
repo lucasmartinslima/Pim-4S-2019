@@ -25,7 +25,8 @@ private static final long serialVersionUID = 1L;
 	private String dataChegada;
 	private float km;
 	private String placa;
-		
+	
+	
 	public String getPlaca() {
 		return placa;
 	}

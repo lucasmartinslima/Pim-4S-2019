@@ -24,9 +24,6 @@ private String placa;
 private String cor;
 private int disponibilidade;
 
-
-
-
 public int getDisponibilidade() {
 	return disponibilidade;
 }

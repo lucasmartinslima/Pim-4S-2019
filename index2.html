@@ -113,7 +113,7 @@
 						<option value="branco">Branco</option>
 					</select>
 					
-					<div class="btn-register" @click="salvarVeiculo();" onclick="closeModal()"onmouseout="vueVeiculos.carregarVeiculos()" ><h4>REGISTRAR</h4></div>
+					<div class="btn-register" @click="salvarVeiculo();" onclick="setTimeout(inicializar, 250)"><h4>REGISTRAR</h4></div>
 
 				</form>
 			</div>
@@ -167,8 +167,8 @@
 						<td v-if="dado.disponibilidade === 2">Indisponível</td>
 						<td v-if="dado.disponibilidade === 3">Alugado</td>
 
-						<td> <a @click="editar(dado.id)">Editar</a>  </td>
-						<td> <a @click="excluirVeiculo(dado.id)">🚽</a>  </td>
+						<td> <a @click="editarVeiculo(dado.id)">Editar</a>  </td>
+						<td> <a @click="excluirVeiculo(dado.id)" onclick="setTimeout(vueVeiculos.carregarVeiculos, 250)">Excluir</a>  </td>
 					</tr>
 
 				</tbody>

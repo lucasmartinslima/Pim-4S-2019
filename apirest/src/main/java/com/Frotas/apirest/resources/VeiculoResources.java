@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Frotas.apirest.repository.VeiculoRepository;
+import com.Frotas.apirest.repository.ViagemRepository;
 import com.Frotas.apirest.models.Veiculo;
+import com.Frotas.apirest.models.Viagem;
 
 
 @RestController
@@ -23,6 +25,8 @@ public class VeiculoResources {
 
 	@Autowired
 	VeiculoRepository veiculoRepository;
+	@Autowired
+	ViagemRepository viagemRepository;
 
 	//Listar todos os produtos em JSON -- metodo GET 
 	@CrossOrigin // LIBERA O ACESSO
@@ -30,6 +34,19 @@ public class VeiculoResources {
 	public List<Veiculo> listarVeiculos(){
 		return veiculoRepository.findAll();
 	}
+	//Listar todos os produtos em JSON -- metodo GET 
+	/*
+	 * @CrossOrigin // LIBERA O ACESSO
+	@GetMapping("/veiculos/disponiveis")
+	public List<Veiculo> listarVeiculosDisponiveis(){
+		List<Veiculo> veiculos = veiculoRepository.findAll();
+		for (Veiculo veiculo : veiculos) {
+			List<Viagem> viagens = viagemRepository.buscarViagemsPorVeiculos(veiculo.getId());
+			veiculo.setDisponibilidade(viagens.size() > 0 ? 0 : 1);
+		}
+		return veiculos;
+	}
+	*/
 	
 	//Listar apenas 1 veiculo -- metodo GET
 	@CrossOrigin
