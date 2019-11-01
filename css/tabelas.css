@@ -8,9 +8,10 @@
 	text-align: center;
 	border: 1.5px solid #0e97e6;
 	border-radius: 5px;
-
+	overflow: auto;
 	position: relative;
 }
+
 
 .ind{
 	text-align: center;
@@ -20,9 +21,10 @@
 
 table {
 
-	width: 90%;
+	width: 100%;
 	background-color: #ccc;
-	margin-left: 5%;
+	margin-left: 0%;
+
 	margin-top: 0px;
 	margin-bottom: 3%;
 	color: #636363;
@@ -30,6 +32,8 @@ table {
 	font-family: 'Titillium Web', sans-serif;
 	font-weight: light;
 	font-size: 18px;
+
+
 
 }
 tr{

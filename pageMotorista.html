@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
 
-	<title>Veículos - 1001 Frotas</title>
+	<title>Motoristas - 1001 Frotas</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -51,14 +51,14 @@
 
 	<div class="row">  <!--=================== MENU ===================== -->
 
-		<div class="col-4 menu" style="border-bottom: solid 4px #2f7dcc;">
+		<div class="col-4 menu">
 			<div><img class="img-menu" src="icons/car.png"></div>
-			<a href="#"> Veículos </a>
+			<a href="pageVeiculo.html"> Veículos </a>
 		</div>
 
-		<div class="col-4 menu">   
+		<div class="col-4 menu"  style="border-bottom: solid 4px #2f7dcc;">   
 			<div><img class="img-menu" src="icons/people.png"></div>
-			<a href="pageMotorista.html">  Motoristas</a>
+			<a href="#">  Motoristas</a>
 		</div>
 
 
@@ -71,7 +71,7 @@
 	</div>
 
 
-	<h1 class="ind" >VEÍCULOS</h1>
+	<h1 class="ind" >MOTORISTAS</h1>
 
 	<div id="vueVeiculos"> <!--=================== TABELA E VUE JS ===================== -->
 
@@ -84,7 +84,7 @@
 
 			<div class="row">  
 				<div class="col-12">
-					<h2> {{modalTitle}} Veículo</h2>
+					<h2> {{modalTitle}} Motorista</h2>
 				</div>	
 			</div>		
 
@@ -135,7 +135,7 @@
 				</div>	
 			</div>
 
-			<table style="overflow-x:auto;">
+			<table>
 				<thead>
 					<tr>
 						<th>Id</th>
