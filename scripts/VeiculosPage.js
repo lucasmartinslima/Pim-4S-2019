@@ -1,7 +1,7 @@
 var vueVeiculos = new Vue({
   el: '#vueVeiculos',
   data: {
-    //dados: null,
+    //dados: null,    // AO USAR A API DESCOMENTAR ESSA LINHA
     selecao: '',
     dadosVeiculo: {
       nome: null,
@@ -11,7 +11,7 @@ var vueVeiculos = new Vue({
       disponibilidade: 1
     },
     
-//Array de objeto para teste, caso não tenha a api funcionando, caso tenha a api favor descomentar dados de cima
+//Array de objeto para teste, caso não tenha a api funcionando, caso tenha a api favor descomentar 'dados' de cima
     dados: [
     {id: 1, nome: 'Carro 1',tipo: 1,placa: 'null',cor: 'cinza',disponibilidade: 1},
     {id: 2, nome: 'Carro 2',tipo: 1,placa: 'null',cor: 'cinza',disponibilidade: 1},
