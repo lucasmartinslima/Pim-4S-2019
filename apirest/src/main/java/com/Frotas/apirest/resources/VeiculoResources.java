@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Frotas.apirest.repository.VeiculoRepository;
@@ -75,6 +76,13 @@ public class VeiculoResources {
 	@PutMapping("/veiculo")
 	public Veiculo atualizaVeiculo(@RequestBody Veiculo veiculo) {
 	   return veiculoRepository.save(veiculo);
+	}
+	
+	// Pega por nome do veiculo
+	@CrossOrigin
+	@GetMapping("/veiculo/") 
+	public Veiculo veiculoUny(@RequestParam(value="nome")String nome, @RequestParam(value="disp")int disponibilidade){
+		return veiculoRepository.findByNomeAndDisponibilidade(nome, disponibilidade);  
 	}
 	
 }

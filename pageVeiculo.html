@@ -9,19 +9,23 @@
 	<link rel="stylesheet" type="text/css" href="css/dsi.css"/>
 	<link rel="stylesheet" type="text/css" href="css/menu.css"/>
 	<link rel="stylesheet" type="text/css" href="css/tabelas.css"/>
-
+	<link rel="stylesheet" type="text/css" href="css/loading.css"/>
 
 	<link href="https://fonts.googleapis.com/css?family=Barlow&display=swap" rel="stylesheet">   
 	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap" rel="stylesheet">
 
+	<script type="text/javascript" src="scripts/sessionValidator.js"></script>
+	<script type="text/javascript" src="scripts/loading.js"></script>
 
 	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 
 </head>
-<body onload="inicializar()">
+<body onload="inicializar(); validator();">
+
+<div id="load" class="loading"> <img class="gif" src="icons/caminhao.gif"></div>
 
 	<div class="backModal" id="backModal" onclick="closeModal()"></div>
 
@@ -42,7 +46,7 @@
 
 			<div class="col-2  account"> 
 				
-				<div class="acc"> Lucas Martins</div>
+				<div class="acc"> <p id="nomeUsuario"></p></div>
 			</div> 
 
 		</div>
@@ -114,7 +118,7 @@
 					</select>
 					
 					<br>
-					<div class="btn-register" @click="salvarVeiculo();" onclick="setTimeout(inicializar, 250)">
+					<div class="btn-register" @click="salvarVeiculo();" onclick="">
 						<h4>REGISTRAR</h4>
 					</div>
 

@@ -1,8 +1,5 @@
 #frota_div{
     background-color: white;
-    
-
-
 }
 
 
@@ -16,12 +13,11 @@ body{
     padding: 0;
     margin: 0;
     background: url('../img/bg-login.jpg') no-repeat center center fixed ;
-    background-size: 100%;
-    -webkit-background: cover;
-    background-color: #ebebeb;
-    font-family: 'Cairo', sans-serif;
+    background-size: cover;
 
-    
+    background-color: #ebebeb;
+    font-family: 'Roboto', sans-serif;
+
 }
 
 #input{
@@ -35,10 +31,11 @@ body{
     
 }
 
-.logo{
-    width:130;
-    height:50px;
+.img-menu{
+    width: 160px;
+	margin: 7px;
 }
+
 
 .form-login{
     background-color: white;
@@ -95,6 +92,10 @@ footer {
 
 .row1{
     margin-top: 20px;
+}
+
+.esqSenha{
+    margin-top: 15px;
 }
 
 #pa{

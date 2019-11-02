@@ -10,6 +10,11 @@ var vueVeiculos = new Vue({
       cor: null,
       disponibilidade: 1
     },
+    userSession:{
+      nome: null,
+      email: null,
+      cel: null
+    },
     
 //Array de objeto para teste, caso não tenha a api funcionando, caso tenha a api favor descomentar 'dados' de cima
  /*   dados: [
@@ -28,15 +33,17 @@ var vueVeiculos = new Vue({
 
     carregarVeiculos: function(){
 
+      loadOn()
       $.get("http://localhost:5050/api/veiculos", function(dado){
+        
         vueVeiculos.dados = dado;
         console.log(dado)
-      })  
+      }).done(()=>{loadOff()})
+    
     },
 
     editarVeiculo: function(idEditar){
-
-
+  
       var veiculoEditar =null;
       console.log(idEditar)
       for(i=0;i<5;i++){
@@ -55,6 +62,7 @@ var vueVeiculos = new Vue({
           break;
         }
       }
+   
       $.ajax({
        type: "PUT",
        dataType: "json",
@@ -69,6 +77,7 @@ var vueVeiculos = new Vue({
 
     salvarVeiculo: function(){
 
+      loadOn()
       this.dadosVeiculo.tipo = Number(this.dadosVeiculo.tipo);
 
       $.ajax({
@@ -80,7 +89,7 @@ var vueVeiculos = new Vue({
         success: function(data, textStatus){
          console.log("Veiculo adicionado"+ this.dadosVeiculo)
        }
-     }); 
+     }).done(()=>{   loadOff(); inicializar()}); 
 
       this.dadosVeiculo.nome = null
       this.dadosVeiculo.tipo = null
@@ -141,4 +150,25 @@ function openModal(){
 function inicializar(){
   closeModal()
   vueVeiculos.carregarVeiculos()
+
+var nomeUsuario = document.getElementById("nomeUsuario")
+
+
+if(localStorage.getItem("userSession")){
+  sessionObj = JSON.parse(localStorage.getItem("userSession"))
+
+  vueVeiculos.userSession.nome = sessionObj.nome
+  vueVeiculos.userSession.email = sessionObj.email
+  vueVeiculos.userSession.cel = sessionObj.cel
+  vueVeiculos.userSession.cpf= sessionObj.cpf
+  
+  nomeUsuario.innerHTML = vueVeiculos.userSession.nome
+
+}else{
+  console.log("não existe nada")
 }
+
+
+}
+
+
