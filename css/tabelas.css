@@ -67,7 +67,7 @@ td{
 	width: 80%;
 	height: auto;
 	margin: 10%;
-	margin-top: -8%;
+	margin-top: -180px;
 	padding-top: 0px;
 	background-color: white;
 	text-align: center;
@@ -108,20 +108,31 @@ h2{
 	
 }
 
+
+.bar{
+margin-top: 25px;
+margin-bottom: 25px;
+}.bar input{
+	height: 55px;
+}
 .btn-register{
 	
 	background-color: #4CAF50; /* Green */
 	border: none;
 	color: white;
-	padding: 5px 20px;
+	padding: 0px 50px;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
-	margin: 40px 2px;
+	
 	cursor: pointer;
 	border-radius: 4px;
 
 }
+.icon-search{width: 55px;}.icon-search:hover{cursor: pointer;}
+.filtro{ height: 55px;}
+
+
 .btn-register h4{
 	margin-top: 15px;
 }

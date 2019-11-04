@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.Frotas.apirest.repository.VeiculoRepository;
 import com.Frotas.apirest.repository.ViagemRepository;
+import com.Frotas.apirest.models.Usuario;
 import com.Frotas.apirest.models.Veiculo;
 import com.Frotas.apirest.models.Viagem;
 
@@ -84,5 +85,31 @@ public class VeiculoResources {
 	public Veiculo veiculoUny(@RequestParam(value="nome")String nome, @RequestParam(value="disp")int disponibilidade){
 		return veiculoRepository.findByNomeAndDisponibilidade(nome, disponibilidade);  
 	}
+	
+
+	// Pega por email e senha
+	@CrossOrigin
+	@GetMapping("/veiculos/") 
+	public List<Veiculo> findByNomeAndPlaca(@RequestParam(value="nome")String nome, @RequestParam(value="placa")String placa, @RequestParam(value="disp")int disponibilidade){
+        return veiculoRepository.findByNomeAndPlaca(nome, placa, disponibilidade);  
+	}	
+	
+	@CrossOrigin
+	@GetMapping("/veiculos/disp") 
+	public List<Veiculo> findByDisp(@RequestParam(value="disp")int disponibilidade){
+        return veiculoRepository.findByDisp(disponibilidade);  
+	}	
+	
+	@CrossOrigin
+	@GetMapping("/veiculos/nomePlaca") 
+	public List<Veiculo> findByNome(@RequestParam(value="nome")String nome,@RequestParam(value="placa")String placa){
+        return veiculoRepository.findByNomeAndPlaca(nome, placa);  
+	}	
+	
+	
+	
+	
+	
+	
 	
 }

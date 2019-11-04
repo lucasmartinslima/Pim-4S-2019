@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
 
-	<title>Veículos - 1001 Frotas</title>
+	<title>1001 Frotas - Veículos </title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -17,6 +17,7 @@
 
 	<script type="text/javascript" src="scripts/sessionValidator.js"></script>
 	<script type="text/javascript" src="scripts/loading.js"></script>
+	<script type="text/javascript" src="scripts/menu.js"></script>
 
 	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -25,7 +26,11 @@
 </head>
 <body onload="inicializar(); validator();">
 
-<div id="load" class="loading"> <img class="gif" src="icons/caminhao.gif"></div>
+	<div id="load" class="loading">
+	 <img class="gif" src="icons/caminhao.gif"><br>
+	 <p class="msgLoad">Espere um pouco enquanto <strong>buscamos</strong> os seus dados.</p>
+	</div>
+
 
 	<div class="backModal" id="backModal" onclick="closeModal()"></div>
 
@@ -53,24 +58,43 @@
 	</div>
 
 
-	<div class="row">  <!--=================== MENU ===================== -->
-
-		<div class="col-4 menu" style="border-bottom: solid 4px #2f7dcc;">
+	<div class="row ">  <!--=================== MENU ===================== -->
+		<div class="col-4 menu mobile" style="border-bottom: solid 4px #2f7dcc;">
 			<div><img class="img-menu" src="icons/car.png"></div>
 			<a href="#"> Veículos </a>
 		</div>
 
-		<div class="col-4 menu">   
+		<div class="col-4 menu mobile">   
 			<div><img class="img-menu" src="icons/people.png"></div>
 			<a href="pageMotorista.html">  Motoristas</a>
 		</div>
 
 
-		<div class="col-4 menu">       
+		<div class="col-4 menu mobile">       
 			<div><img class="img-menu" src="icons/rodovia.png"></div>
 			<a href="#">  Viagens</a>
 		</div>
+	</div>
 
+	<div class="menu-mobile" id="menu-mobile"> <!-- Menu mobile-->
+<div>
+<img src="icons/close-menu.png" style="width: 65px; float: right;" onclick="closeMobileMenu()">
+</div>
+			<div class="col-4 menu " style="border-bottom: solid 4px #2f7dcc;">
+					<div><img class="img-menu" src="icons/car.png"></div>
+					<a href="#"> Veículos </a>
+				</div>
+		
+				<div class="col-4 menu ">   
+					<div><img class="img-menu" src="icons/people.png"></div>
+					<a href="pageMotorista.html">  Motoristas</a>
+				</div>
+		
+		
+				<div class="col-4 menu ">       
+					<div><img class="img-menu" src="icons/rodovia.png"></div>
+					<a href="#">  Viagens</a>
+				</div>
 
 	</div>
 
@@ -129,14 +153,28 @@
 
 		<div class="campo-tabela" id="listarVeiculos">
 
-			<div class="row">
-				<div class="col-8">
-				</div>
-				<div class="col-4">
+			<div class="row bar">
+				<div class="col-3">
 					<div class="btn-register width-80 row" onclick="openModal()">
 						<h4 class="col-12" style="text-align: center;">REGISTRAR</h4> 
 					</div>
 				</div>	
+				<div class="col-6">
+					<input v-model="inputBusca" placeholder="Buscar por placa ou modelo" class="busca-bar" id="busca">
+				</div>
+
+				<div class="col-1">
+						<select v-model="selectBusca" class="filtro">
+								<option value=4 >Todos</option>
+								<option selected value=1  >Disponível</option>
+							<option value=2 >Indisponível</option>
+								<option value=3 >Alugado</option>
+						</select>
+					</div>
+				<div class="col-1">
+						<img src="icons/search.png" @click="carregarNomeOuPlaca()" class="icon-search">
+					</div>
+				
 			</div>
 
 			<table style="overflow-x:auto;">

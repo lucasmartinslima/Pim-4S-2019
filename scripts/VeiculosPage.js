@@ -26,10 +26,37 @@ var vueVeiculos = new Vue({
     {id: 4, nome: 'Carro 4',tipo: 1,placa: 'null',cor: 'cinza',disponibilidade: 1},
     {id: 4, nome: 'Carro 4',tipo: 1,placa: 'null',cor: 'cinza',disponibilidade: 1}],
 */
-    modalTitle: 'Registrar'
+    modalTitle: 'Registrar',
+    inputBusca: null,
+    selectBusca: 1
 
   },
   methods: {
+
+    carregarNomeOuPlaca: function(){
+     
+loadOn()
+      if(this.inputBusca && this.selectBusca != 4){
+        $.get("http://localhost:5050/api/veiculos/?nome="+this.inputBusca+"&placa="+this.inputBusca+"&disp="+this.selectBusca, function(dado){        
+          vueVeiculos.dados = dado;
+          console.log(dado)
+        }).done(()=>{loadOff()})
+      }else if(this.selectBusca != 4){
+        $.get("http://localhost:5050/api/veiculos/disp?disp="+Number(this.selectBusca), function(dado){        
+          vueVeiculos.dados = dado;
+          console.log(dado)
+        }).done(()=>{loadOff()})
+      }else if(this.inputBusca && this.selectBusca == 4){
+        $.get("http://localhost:5050/api/veiculos/nomePlaca?nome="+this.inputBusca+"&placa="+this.inputBusca, function(dado){        
+          vueVeiculos.dados = dado;
+          console.log(dado)
+        }).done(()=>{loadOff()})
+      }else if(this.selectBusca == 4){
+        inicializar()
+      }
+      
+      
+    },
 
     carregarVeiculos: function(){
 
@@ -70,7 +97,7 @@ var vueVeiculos = new Vue({
        contentType: "application/json",
        data: JSON.stringify(this.dadosVeiculo),
        success: function(data, textStatus){
-         console.log("Veiculo excluido")
+         console.log("Veiculo editado")
        }
      });
     },
@@ -78,6 +105,7 @@ var vueVeiculos = new Vue({
     salvarVeiculo: function(){
 
       loadOn()
+      
       this.dadosVeiculo.tipo = Number(this.dadosVeiculo.tipo);
 
       $.ajax({
@@ -89,7 +117,7 @@ var vueVeiculos = new Vue({
         success: function(data, textStatus){
          console.log("Veiculo adicionado"+ this.dadosVeiculo)
        }
-     }).done(()=>{   loadOff(); inicializar()}); 
+     }).done(()=>{   loadOff(); inicializar();}).fail(()=>{ alert("Item não adicionado, favor verificar a sua conexão!")}); 
 
       this.dadosVeiculo.nome = null
       this.dadosVeiculo.tipo = null
@@ -102,9 +130,10 @@ var vueVeiculos = new Vue({
     excluirVeiculo: function(idExcluir){
      var veiculoExcluir =null;
      console.log(idExcluir)
-     for(i=0;i<5;i++){
+     for(i=0;i<this.dados.length;i++){
       if(this.dados[i].id == idExcluir){
         veiculoExcluir = this.dados[i]
+        console.log(veiculoExcluir)
         break;
       }
     }
@@ -168,7 +197,5 @@ if(localStorage.getItem("userSession")){
   console.log("não existe nada")
 }
 
-
 }
-
 

@@ -4,6 +4,37 @@ html,body{ margin: 0; padding: 0;
 
 }
 
+@media screen and (max-width: 768px) {
+   .mobile{
+	   margin-top: -250px;
+	   background-color: black;
+   }
+   .menu-mobile{
+	position: fixed;
+	width: 100%;
+	margin-top: -130px;
+	visibility: visible;
+	z-index: 3;
+	background-color: white;
+	height: 100%;
+}
+}
+@media screen and (min-width: 768px) {
+	.menu-mobile{
+		position: fixed;
+		width: 100%;
+		visibility: hidden;
+		z-index: 3;
+		margin-top: -1800px;
+		background-color: cornflowerblue;
+		height: 100%;
+	}
+ }
+
+
+
+
+
 .menu{
 	text-align: center;
 	background-color: white;
