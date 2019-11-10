@@ -78,7 +78,7 @@
 		<!--=================== MENU ===================== -->
 		<div class="col-4 menu mobile">
 			<div><img class="img-menu" src="icons/car.png"></div>
-			<a href="#"> Veículos </a>
+			<a href="pageVeiculo.html"> Veículos </a>
 		</div>
 
 		<div class="col-4 menu mobile" style="border-bottom: solid 4px #2f7dcc;">
@@ -177,8 +177,8 @@
 				<div class="col-1">
 					<select v-model="selectBusca" class="filtro">
 						<option value=4>Todos</option>
-						<option selected value=true>Disponível</option>
-						<option value=false>Indisponível</option>
+						<option value=1>Disponível</option>
+						<option value=0>Indisponível</option>
 					</select>
 				</div>
 				<div class="col-1">
@@ -212,16 +212,16 @@
 						<td>{{ dado.cnh }} </td>
 						<td>{{ dado.venc_cnh }} </td>
 
-						<td v-if="dado.disponibilidade === true">Disponível</td>
-						<td v-if="dado.disponibilidade === false">Indisponível</td>
+						<td v-if="dado.disponibilidade === 1">Disponível</td>
+						<td v-if="dado.disponibilidade === 0">Indisponível</td>
 
 
 
 						<td> <img src="icons/editar.png" class="tbIcon" @click="editarMotorista(dado.id)"></td>
-						<td  v-if="dado.disponibilidade === true"> <img src="icons/excluir.png" class="tbIcon" @click="excluirMotorista(dado.id)"
+						<td  v-if="dado.disponibilidade === 1"> <img src="icons/excluir.png" class="tbIcon" @click="excluirMotorista(dado.id)"
 								onclick="setTimeout(vueMotorista.carregarMotoristas, 750);"> </td>
 
-						<td v-if="dado.disponibilidade === false"> <img src="icons/excluir.png" style="opacity: 0.5; width: 20px; margin: 2px;" class=""> </td>
+						<td v-if="dado.disponibilidade === 0"> <img src="icons/excluir.png" style="opacity: 0.5; width: 20px; margin: 2px;" class=""> </td>
 					</tr>
 
 				</tbody>

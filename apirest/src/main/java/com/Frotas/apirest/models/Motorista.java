@@ -24,7 +24,7 @@ public class Motorista implements Serializable{
 	private String cnh;
 	private String venc_cnh;
 	private String cel;
-	private boolean disponibilidade;
+	private int disponibilidade;
 	public long getId() {
 		return id;
 	}
@@ -61,10 +61,10 @@ public class Motorista implements Serializable{
 	public void setCel(String cel) {
 		this.cel = cel;
 	}
-	public boolean getDisponibilidade() {
+	public int getDisponibilidade() {
 		return disponibilidade;
 	}
-	public void setDisponibilidade(boolean disponibilidade) {
+	public void setDisponibilidade(int disponibilidade) {
 		this.disponibilidade = disponibilidade;
 	}
 	

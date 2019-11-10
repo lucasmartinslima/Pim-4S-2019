@@ -13,13 +13,13 @@ public interface MotoristaRepository extends JpaRepository<Motorista, Long>{
 	
 	
 	 @Query("FROM Motorista v WHERE v.nome= :nome AND v.disponibilidade = :disponibilidade")
-	 Motorista findByNomeAndDisponibilidade(String nome, boolean disponibilidade);
+	 Motorista findByNomeAndDisponibilidade(String nome, int disponibilidade);
 	    
 	    @Query("FROM Motorista v WHERE v.nome like :nome% OR v.cpf like :cpf% AND v.disponibilidade = :disponibilidade")
-	    List<Motorista> findByNomeAndCpf(String nome, String cpf, boolean disponibilidade);
+	    List<Motorista> findByNomeAndCpf(String nome, String cpf, int disponibilidade);
 		
 	    @Query("FROM Motorista v WHERE v.disponibilidade = :disponibilidade")
-	    List<Motorista> findByDisp(boolean disponibilidade);
+	    List<Motorista> findByDisp(int disponibilidade);
 	    
 	    
 	    @Query("FROM Motorista v WHERE v.nome like :nome% OR v.cpf like :cpf%")

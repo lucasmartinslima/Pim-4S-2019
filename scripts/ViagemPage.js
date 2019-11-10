@@ -1,15 +1,21 @@
-var vueMotorista = new Vue({
-  el: '#vueMotorista',
+var vueViagem = new Vue({
+  el: '#vueViagem',
   data: {
     dados: null,    // AO USAR A API DESCOMENTAR ESSA LINHA
+    dadoMotoristasDisps : null,
     selecao: '',
-    dadosMotorista: {
-      nome: null,
-      cpf: null,
-      cnh: null,
-      venc_cnh: null,
-      cel: null,
-      disponibilidade: 1
+    idMotoristaSelect : 1,
+    dadosViagem: {
+      statusViagem: null,
+      cep: null,
+      diaInicio: null,
+      mesInicio: null,
+      anoInicio: null,
+      diaFim: null,
+      mesFim: null,
+      anoFim: null,
+      idVeiculo: null,
+      idMotorista: null
     },
     userSession: {
       nome: null,
@@ -29,17 +35,17 @@ var vueMotorista = new Vue({
       loadOn()
       if (this.inputBusca && this.selectBusca != 4) {
         $.get("http://localhost:5050/api/motoristas/?nome=" + this.inputBusca + "&cpf=" + this.inputBusca + "&disp=" + this.selectBusca, function (dado) {
-          vueMotorista.dados = dado;
+          vueViagem.dados = dado;
           console.log(dado)
         }).done(() => { loadOff() })
       } else if (this.selectBusca != 4) {
         $.get("http://localhost:5050/api/motoristas/disp?disp=" + this.selectBusca, function (dado) {
-          vueMotorista.dados = dado;
+          vueViagem.dados = dado;
           console.log(dado)
         }).done(() => { loadOff() })
       } else if (this.inputBusca && this.selectBusca == 4) {
         $.get("http://localhost:5050/api/motoristas/nomeCpf?nome=" + this.inputBusca + "&cpf=" + this.inputBusca, function (dado) {
-          vueMotorista.dados = dado;
+          vueViagem.dados = dado;
           console.log(dado)
         }).done(() => { loadOff() })
       } else if (this.selectBusca == 4) {
@@ -49,18 +55,30 @@ var vueMotorista = new Vue({
 
     },
 
-    carregarMotoristas: function () {
+    carregarViagens: function () {
 
       loadOn()
-      $.get("http://localhost:5050/api/motoristas", function (dado) {
+      $.get("http://localhost:5050/api/viagens", function (dado) {
 
-        vueMotorista.dados = dado;
+        vueViagem.dados = dado;
         console.log(dado)
       }).done(() => { loadOff() })
 
     },
 
-    editarMotorista: function (idEditar) {
+    carregarMotoristas: function () {
+
+      loadOn()
+      $.get("http://localhost:5050/api/motoristas/disp?disp=1", function (dado) {
+
+        vueViagem.dadoMotoristasDisps = dado;
+        console.log(dado)
+      }).done(() => { loadOff() })
+
+    },
+
+
+    editarViagem: function (idEditar) {
 
       var motoristaEditar = null;
       console.log(idEditar)
@@ -70,13 +88,13 @@ var vueMotorista = new Vue({
 
           console.log(motoristaEditar)
 
-          this.dadosMotorista.id = motoristaEditar.id;
-          this.dadosMotorista.nome = motoristaEditar.nome;
-          this.dadosMotorista.cpf = motoristaEditar.cpf;
-          this.dadosMotorista.disponibilidade = motoristaEditar.disponibilidade;
-          this.dadosMotorista.cel = motoristaEditar.cel;
-          this.dadosMotorista.cnh = motoristaEditar.cnh;
-          this.dadosMotorista.venc_cnh = motoristaEditar.venc_cnh;
+          this.dadosViagem.id = motoristaEditar.id;
+          this.dadosViagem.nome = motoristaEditar.nome;
+          this.dadosViagem.cpf = motoristaEditar.cpf;
+          this.dadosViagem.disponibilidade = motoristaEditar.disponibilidade;
+          this.dadosViagem.cel = motoristaEditar.cel;
+          this.dadosViagem.cnh = motoristaEditar.cnh;
+          this.dadosViagem.venc_cnh = motoristaEditar.venc_cnh;
 
           openModal()
           break;
@@ -88,18 +106,18 @@ var vueMotorista = new Vue({
         dataType: "json",
         url: "http://localhost:5050/api/motorista",
         contentType: "application/json",
-        data: JSON.stringify(this.dadosMotorista),
+        data: JSON.stringify(this.dadosViagem),
         success: function (data, textStatus) {
           console.log("Veiculo editado")
         }
       });
     },
 
-    salvarMotorista: function () {
+    salvarViagem: function () {
 
       loadOn()
 
-      if (cpf(this.dadosMotorista.cpf) == false) {
+      if (cpf(this.dadosViagem.cpf) == false) {
 
         alert('CPF INVÁLIDO! FAVOR REGISTRAR UM CPF VÁLIDO.')
         var cpfInput = document.getElementById('cpf')
@@ -108,25 +126,25 @@ var vueMotorista = new Vue({
         loadOff();
       } else {
 
-        this.dadosMotorista.tipo = Number(this.dadosMotorista.tipo);
+        this.dadosViagem.tipo = Number(this.dadosViagem.tipo);
 
         $.ajax({
           type: "POST",
           dataType: "json",
           url: "http://localhost:5050/api/motorista",
           contentType: "application/json",
-          data: JSON.stringify(this.dadosMotorista),
+          data: JSON.stringify(this.dadosViagem),
           success: function (data, textStatus) {
-            console.log("Veiculo adicionado" + this.dadosMotorista)
+            console.log("Veiculo adicionado" + this.dadosViagem)
           }
         }).done(() => { loadOff(); inicializar(); }).fail(() => { alert("Item não adicionado, favor verificar a sua conexão!") });
 
-        this.dadosMotorista.nome = null
-        this.dadosMotorista.cnh = null
-        this.dadosMotorista.cpf = null
-        this.dadosMotorista.cel = null
-        this.dadosMotorista.venc_cnh = null
-        this.dadosMotorista.disponibilidade = 1
+        this.dadosViagem.nome = null
+        this.dadosViagem.cnh = null
+        this.dadosViagem.cpf = null
+        this.dadosViagem.cel = null
+        this.dadosViagem.venc_cnh = null
+        this.dadosViagem.disponibilidade = 1
 
       }
 
@@ -134,7 +152,7 @@ var vueMotorista = new Vue({
 
     },
 
-    excluirMotorista: function (idExcluir) {
+    excluirViagem: function (idExcluir) {
       loadOn()
       var motoristaExcluir = null;
       console.log(idExcluir)
@@ -168,11 +186,11 @@ function closeModal() {
   backModal.style.visibility = "hidden";
 
 
-  vueMotorista.dadosMotorista.nome = null
-  vueMotorista.dadosMotorista.tipo = null
-  vueMotorista.dadosMotorista.placa = null
-  vueMotorista.dadosMotorista.cor = null
-  vueMotorista.dadosMotorista.disponibilidade = 1
+  vueViagem.dadosViagem.nome = null
+  vueViagem.dadosViagem.tipo = null
+  vueViagem.dadosViagem.placa = null
+  vueViagem.dadosViagem.cor = null
+  vueViagem.dadosViagem.disponibilidade = 1
 
 
 }
@@ -187,7 +205,8 @@ function openModal() {
 
 function inicializar() {
   closeModal()
-  vueMotorista.carregarMotoristas()
+  vueViagem.carregarViagens()
+  vueViagem.carregarMotoristas()
 
   var nomeUsuario = document.getElementById("nomeUsuario")
 
@@ -195,12 +214,12 @@ function inicializar() {
   if (localStorage.getItem("userSession")) {
     sessionObj = JSON.parse(localStorage.getItem("userSession"))
 
-    vueMotorista.userSession.nome = sessionObj.nome
-    vueMotorista.userSession.email = sessionObj.email
-    vueMotorista.userSession.cel = sessionObj.cel
-    vueMotorista.userSession.cpf = sessionObj.cpf
+    vueViagem.userSession.nome = sessionObj.nome
+    vueViagem.userSession.email = sessionObj.email
+    vueViagem.userSession.cel = sessionObj.cel
+    vueViagem.userSession.cpf = sessionObj.cpf
 
-    nomeUsuario.innerHTML = vueMotorista.userSession.nome
+    nomeUsuario.innerHTML = vueViagem.userSession.nome
 
   } else {
     console.log("não existe nada")

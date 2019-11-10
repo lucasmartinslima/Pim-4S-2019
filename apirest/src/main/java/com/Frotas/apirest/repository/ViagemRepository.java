@@ -11,8 +11,5 @@ public interface ViagemRepository extends JpaRepository<Viagem, Long>{
 
 	Viagem findById(long id);
 
-	//@Query("FROM Viagem v WHERE v.veiculo.id = :idVeiculo AND v.fim IS NULL")
-	//List<Viagem> buscarViagemsPorVeiculos(long idVeiculo);
-
 
 }

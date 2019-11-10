@@ -18,41 +18,32 @@ private static final long serialVersionUID = 1L;
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	
-	private String situacao;
-	private String cidade;
+	private String statusViagem;
 	private int cep;
-	private String dataPartida;
-	private String dataChegada;
-	private float km;
-	private String placa;
+	
+	private int diaInicio;
+	private int mesInicio;
+	private int anoInicio;
+	
+	private int diaFim;
+	private int mesFim;
+	private int anoFim;
+
+	private int idVeiculo;
+	private int idMotorista;
 	
 	
-	public String getPlaca() {
-		return placa;
+	public long getId() {
+		return id;
 	}
-	public void setPlaca(String placa) {
-		this.placa = placa;
+	public void setId(long id) {
+		this.id = id;
 	}
-	private String motorista;
-	private String veiculo;
-	
-	public String getMotorista() {
-		return motorista;
+	public String getStatusViagem() {
+		return statusViagem;
 	}
-	public void setMotorista(String motorista) {
-		this.motorista = motorista;
-	}
-	public String getVeiculo() {
-		return veiculo;
-	}
-	public void setVeiculo(String veiculo) {
-		this.veiculo = veiculo;
-	}
-	public String getCidade() {
-		return cidade;
-	}
-	public void setCidade(String cidade) {
-		this.cidade = cidade;
+	public void setStatusViagem(String statusViagem) {
+		this.statusViagem = statusViagem;
 	}
 	public int getCep() {
 		return cep;
@@ -60,36 +51,58 @@ private static final long serialVersionUID = 1L;
 	public void setCep(int cep) {
 		this.cep = cep;
 	}
-	public long getId() {
-		return id;
+	public int getDiaInicio() {
+		return diaInicio;
 	}
-	public void setId(long id) {
-		this.id = id;
+	public void setDiaInicio(int diaInicio) {
+		this.diaInicio = diaInicio;
 	}
-	public String getSituacao() {
-		return situacao;
+	public int getMesInicio() {
+		return mesInicio;
 	}
-	public void setSituacao(String situacao) {
-		this.situacao = situacao;
+	public void setMesInicio(int mesInicio) {
+		this.mesInicio = mesInicio;
 	}
-	public String getDataPartida() {
-		return dataPartida;
+	public int getAnoInicio() {
+		return anoInicio;
 	}
-	public void setDataPartida(String dataPartida) {
-		this.dataPartida = dataPartida;
+	public void setAnoInicio(int anoInicio) {
+		this.anoInicio = anoInicio;
 	}
-	public String getDataChegada() {
-		return dataChegada;
+	public int getDiaFim() {
+		return diaFim;
 	}
-	public void setDataChegada(String dataChegada) {
-		this.dataChegada = dataChegada;
+	public void setDiaFim(int diaFim) {
+		this.diaFim = diaFim;
 	}
-	public float getKm() {
-		return km;
+	public int getMesFim() {
+		return mesFim;
 	}
-	public void setKm(float km) {
-		this.km = km;
+	public void setMesFim(int mesFim) {
+		this.mesFim = mesFim;
 	}
+	public int getAnoFim() {
+		return anoFim;
+	}
+	public void setAnoFim(int anoFim) {
+		this.anoFim = anoFim;
+	}
+	public int getIdVeiculo() {
+		return idVeiculo;
+	}
+	public void setIdVeiculo(int idVeiculo) {
+		this.idVeiculo = idVeiculo;
+	}
+	public int getIdMotorista() {
+		return idMotorista;
+	}
+	public void setIdMotorista(int idMotorista) {
+		this.idMotorista = idMotorista;
+	}
+	
+	
+	
+	
 	
 	
 	

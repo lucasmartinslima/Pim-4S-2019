@@ -71,20 +71,20 @@ public class MotoristaResources {
 	// Pega por nome do motorista
 		@CrossOrigin
 		@GetMapping("/motorista/") 
-		public Motorista motoristaUny(@RequestParam(value="nome")String nome, @RequestParam(value="disp")boolean disponibilidade){
+		public Motorista motoristaUny(@RequestParam(value="nome")String nome, @RequestParam(value="disp")int disponibilidade){
 			return motoristaRepository.findByNomeAndDisponibilidade(nome, disponibilidade);  
 		}
 	
 	// Pega por email e senha
 	@CrossOrigin
 	@GetMapping("/motoristas/") 
-	public List<Motorista> findByNomeAndCpf(@RequestParam(value="nome")String nome, @RequestParam(value="cpf")String cpf, @RequestParam(value="disp")boolean disponibilidade){
+	public List<Motorista> findByNomeAndCpf(@RequestParam(value="nome")String nome, @RequestParam(value="cpf")String cpf, @RequestParam(value="disp")int disponibilidade){
         return motoristaRepository.findByNomeAndCpf(nome, cpf, disponibilidade);  
 	}	
 	
 	@CrossOrigin
 	@GetMapping("/motoristas/disp") 
-	public List<Motorista> findByDisp(@RequestParam(value="disp")boolean disponibilidade){
+	public List<Motorista> findByDisp(@RequestParam(value="disp")int disponibilidade){
         return motoristaRepository.findByDisp(disponibilidade);  
 	}	
 	
