@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" style="background-color: white;">
 <head>
 
 	<title>1001 Frotas - Veículos </title>
@@ -34,7 +34,7 @@
 
 	<div class="backModal" id="backModal" onclick="closeModal()"></div>
 
-	<div class="cabecalho">
+	<div class="cabecalho" ">
 		<div class="row">
 
 			<div class="col-5" >
@@ -49,16 +49,26 @@
 				<br>
 			</div> 
 
-			<div class="col-2  account"> 
+			<div class="col-2 account"> 
 				
-				<div class="acc"> <p id="nomeUsuario"></p></div>
+				<div class="row">
+					<div class="col-6" >
+						<div class=""  style="width: auto;"><p id="nomeUsuario" style="margin-top: 16px; float: right;"> </p> </div>
+					</div> 
+					<div class="row">
+						<div class="col-6" >
+							<img src="icons/logout.png" onclick="vueLogin.deslogar()" class="logout-icon"style="width: 27px;  margin-top: 8px;">
+						</div> 
+				
+				
+			</div> 
 			</div> 
 
 		</div>
 	</div>
 
 
-	<div class="row ">  <!--=================== MENU ===================== -->
+	<div class="row" style="z-index: 4;">  <!--=================== MENU ===================== -->
 		<div class="col-4 menu mobile" style="border-bottom: solid 4px #2f7dcc;">
 			<div><img class="img-menu" src="icons/car.png"></div>
 			<a href="#"> Veículos </a>
@@ -213,7 +223,7 @@
 						<td v-if="dado.disponibilidade === 3">Alugado</td>
 
 						<td> <img src="icons/editar.png" class="tbIcon" @click="editarVeiculo(dado.id)"></td>
-						<td> <img src="icons/excluir.png" class="tbIcon" @click="excluirVeiculo(dado.id)" onclick="setTimeout(vueVeiculos.carregarVeiculos, 250);">  </td>
+						<td> <img src="icons/excluir.png" class="tbIcon" @click="excluirVeiculo(dado.id)" onclick="setTimeout(vueVeiculos.carregarVeiculos, 780);">  </td>
 					</tr>
 
 				</tbody>
@@ -222,6 +232,7 @@
 
 	</div>
 	<script type="text/javascript" src="scripts/VeiculosPage.js"></script>
+	<script type="text/javascript" src="scripts/loginUser.js"></script>
 
 </body>
 </html>

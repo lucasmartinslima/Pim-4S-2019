@@ -11,10 +11,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Frotas.apirest.repository.MotoristaRepository;
 import com.Frotas.apirest.models.Motorista;
+import com.Frotas.apirest.models.Veiculo;
 
 
 @RestController
@@ -59,5 +61,39 @@ public class MotoristaResources {
 	public Motorista atualizaVeiculo(@RequestBody Motorista motorista) {
 	   return motoristaRepository.save(motorista);
 	}
+	
+	
+	
+	
+	
+	
+	
+	// Pega por nome do motorista
+		@CrossOrigin
+		@GetMapping("/motorista/") 
+		public Motorista motoristaUny(@RequestParam(value="nome")String nome, @RequestParam(value="disp")boolean disponibilidade){
+			return motoristaRepository.findByNomeAndDisponibilidade(nome, disponibilidade);  
+		}
+	
+	// Pega por email e senha
+	@CrossOrigin
+	@GetMapping("/motoristas/") 
+	public List<Motorista> findByNomeAndCpf(@RequestParam(value="nome")String nome, @RequestParam(value="cpf")String cpf, @RequestParam(value="disp")boolean disponibilidade){
+        return motoristaRepository.findByNomeAndCpf(nome, cpf, disponibilidade);  
+	}	
+	
+	@CrossOrigin
+	@GetMapping("/motoristas/disp") 
+	public List<Motorista> findByDisp(@RequestParam(value="disp")boolean disponibilidade){
+        return motoristaRepository.findByDisp(disponibilidade);  
+	}	
+	
+	@CrossOrigin
+	@GetMapping("/motoristas/nomeCpf") 
+	public List<Motorista> findByNome(@RequestParam(value="nome")String nome,@RequestParam(value="cpf")String cpf){
+        return motoristaRepository.findByNomeAndPlaca(nome, cpf);  
+	}	
+	
+	
 	
 }

@@ -73,7 +73,7 @@ loadOn()
   
       var veiculoEditar =null;
       console.log(idEditar)
-      for(i=0;i<5;i++){
+      for(i=0;i< this.dados.length;i++){
         if(this.dados[i].id == idEditar){
           veiculoEditar = this.dados[i]
 
@@ -128,6 +128,7 @@ loadOn()
     },
 
     excluirVeiculo: function(idExcluir){
+      loadOn()
      var veiculoExcluir =null;
      console.log(idExcluir)
      for(i=0;i<this.dados.length;i++){

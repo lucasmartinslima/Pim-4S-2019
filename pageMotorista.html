@@ -1,79 +1,126 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" style="background-color: white;">
+
 <head>
 
-	<title>Motoristas - 1001 Frotas</title>
+	<title>1001 Frotas - Motoristas </title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<link rel="stylesheet" type="text/css" href="css/dsi.css"/>
-	<link rel="stylesheet" type="text/css" href="css/menu.css"/>
-	<link rel="stylesheet" type="text/css" href="css/tabelas.css"/>
+	<link rel="stylesheet" type="text/css" href="css/dsi.css" />
+	<link rel="stylesheet" type="text/css" href="css/menu.css" />
+	<link rel="stylesheet" type="text/css" href="css/tabelas.css" />
+	<link rel="stylesheet" type="text/css" href="css/loading.css" />
 
-
-	<link href="https://fonts.googleapis.com/css?family=Barlow&display=swap" rel="stylesheet">   
+	<link href="https://fonts.googleapis.com/css?family=Barlow&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap" rel="stylesheet">
 
+	<script type="text/javascript" src="scripts/sessionValidator.js"></script>
+	<script type="text/javascript" src="scripts/loading.js"></script>
+	<script type="text/javascript" src="scripts/menu.js"></script>
+	<script type="text/javascript" src="scripts/validacao.js"></script>
 
 	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 
 </head>
-<body onload="inicializar()">
+
+<body onload="inicializar(); validator();">
+
+	<div id="load" class="loading">
+		<img class="gif" src="icons/caminhao.gif"><br>
+		<p class="msgLoad">Espere um pouco enquanto <strong>buscamos</strong> os seus dados.</p>
+	</div>
+
 
 	<div class="backModal" id="backModal" onclick="closeModal()"></div>
 
-	<div class="cabecalho">
-		<div class="row">
+	<div class="cabecalho" ">
+		<div class=" row">
 
-			<div class="col-5" >
-				<br>
-			</div> 
+		<div class="col-5">
+			<br>
+		</div>
 
-			<div class="col-2" style=" text-align: center;">
-				<img src="img/logo.png" class="lg-img">
-			</div> 
+		<div class="col-2" style=" text-align: center;">
+			<img src="img/logo.png" class="lg-img">
+		</div>
 
-			<div class="col-3" > 
-				<br>
-			</div> 
+		<div class="col-3">
+			<br>
+		</div>
 
-			<div class="col-2  account"> 
-				
-				<div class="acc"> Lucas Martins</div>
-			</div> 
+		<div class="col-2 account">
+
+			<div class="row">
+				<div class="col-6">
+					<div class="" style="width: auto;">
+						<p id="nomeUsuario" style="margin-top: 16px; float: right;"> </p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-6">
+						<img src="icons/logout.png" onclick="vueLogin.deslogar()" class="logout-icon"
+							style="width: 27px;  margin-top: 8px;">
+					</div>
+
+
+				</div>
+			</div>
 
 		</div>
 	</div>
 
 
-	<div class="row">  <!--=================== MENU ===================== -->
-
-		<div class="col-4 menu">
+	<div class="row" style="z-index: 4;">
+		<!--=================== MENU ===================== -->
+		<div class="col-4 menu mobile">
 			<div><img class="img-menu" src="icons/car.png"></div>
-			<a href="pageVeiculo.html"> Veículos </a>
+			<a href="#"> Veículos </a>
 		</div>
 
-		<div class="col-4 menu"  style="border-bottom: solid 4px #2f7dcc;">   
+		<div class="col-4 menu mobile" style="border-bottom: solid 4px #2f7dcc;">
 			<div><img class="img-menu" src="icons/people.png"></div>
-			<a href="#">  Motoristas</a>
+			<a href="pageMotorista.html"> Motoristas</a>
 		</div>
 
 
-		<div class="col-4 menu">       
+		<div class="col-4 menu mobile">
 			<div><img class="img-menu" src="icons/rodovia.png"></div>
-			<a href="#">  Viagens</a>
+			<a href="#"> Viagens</a>
+		</div>
+	</div>
+
+	<div class="menu-mobile" id="menu-mobile">
+		<!-- Menu mobile-->
+		<div>
+			<img src="icons/close-menu.png" style="width: 65px; float: right;" onclick="closeMobileMenu()">
+		</div>
+		<div class="col-4 menu ">
+			<div><img class="img-menu" src="icons/car.png"></div>
+			<a href="#"> Veículos </a>
 		</div>
 
+		<div class="col-4 menu " style="border-bottom: solid 4px #2f7dcc;">
+			<div><img class="img-menu" src="icons/people.png"></div>
+			<a href="pageMotorista.html"> Motoristas</a>
+		</div>
+
+
+		<div class="col-4 menu ">
+			<div><img class="img-menu" src="icons/rodovia.png"></div>
+			<a href="#"> Viagens</a>
+		</div>
 
 	</div>
 
 
-	<h1 class="ind" >MOTORISTAS</h1>
+	<h1 class="ind">MOTORISTAS</h1>
 
-	<div id="vueVeiculos"> <!--=================== TABELA E VUE JS ===================== -->
+	<div id="vueMotorista">
+		<!--=================== TABELA E VUE JS ===================== -->
 
 
 
@@ -82,39 +129,31 @@
 				<img src="icons/close.png" class="closeIcon" onclick="closeModal()">
 			</div>
 
-			<div class="row">  
+			<div class="row">
 				<div class="col-12">
 					<h2> {{modalTitle}} Motorista</h2>
-				</div>	
-			</div>		
+				</div>
+			</div>
 
 			<div class="reg">
 				<form class="regVeiculo">
-					<label>Modelo:</label>
-					<input type="text" placeholder="Ex: Gol, Voyage, Uno e etc." v-model="dadosVeiculo.nome">
-					<br><label>Tipo:</label>
+					<label>Nome:</label>
+					<input type="text" placeholder="Ex: Lucas, Victor, Bruno e etc." v-model="dadosMotorista.nome">
 
-					<select v-model="dadosVeiculo.tipo" >
-						<option value=2 >Carro</option>
-						<option value=3>Caminhão</option>
-						<option value=1>Moto</option>
-						<option value=4>Van</option>
-					</select>
+					<br><label>Celular:</label>
+					<input type="text" placeholder="Ex: 16991471398" v-model="dadosMotorista.cel">
 
+					<br><label>CPF:</label>{{dadosMotorista.cpf}}
+					<input id="cpf" type="text" placeholder="Ex: 42285166887" v-model="dadosMotorista.cpf">
+
+					<br><label>CNH:</label>
+					<input type="text" placeholder="Ex: 458756987" v-model="dadosMotorista.cnh">
+
+					<br><label>Venc cnh:</label>
+					<input type="date" placeholder="" v-model="dadosMotorista.venc_cnh">
 
 					<br>
-					<label>Placa:</label>
-					<input type="text" placeholder="Placa do veículo" v-model="dadosVeiculo.placa">
-					<br><label>Cor:</label>
-					<select v-model="dadosVeiculo.cor">
-						<option selected value="preto">Preto</option>
-						<option value="cinza">Cinza</option>
-						<option value="prata">Prata</option>
-						<option value="branco">Branco</option>
-					</select>
-					
-					<br>
-					<div class="btn-register" @click="salvarVeiculo();" onclick="setTimeout(inicializar, 250)">
+					<div class="btn-register" @click="salvarMotorista();" onclick="">
 						<h4>REGISTRAR</h4>
 					</div>
 
@@ -125,24 +164,37 @@
 
 		<div class="campo-tabela" id="listarVeiculos">
 
-			<div class="row">
-				<div class="col-8">
-				</div>
-				<div class="col-4">
+			<div class="row bar">
+				<div class="col-3">
 					<div class="btn-register width-80 row" onclick="openModal()">
-						<h4 class="col-12" style="text-align: center;">REGISTRAR</h4> 
+						<h4 class="col-12" style="text-align: center;">REGISTRAR</h4>
 					</div>
-				</div>	
+				</div>
+				<div class="col-6">
+					<input v-model="inputBusca" placeholder="Buscar por nome ou CPF" class="busca-bar" id="busca">
+				</div>
+
+				<div class="col-1">
+					<select v-model="selectBusca" class="filtro">
+						<option value=4>Todos</option>
+						<option selected value=true>Disponível</option>
+						<option value=false>Indisponível</option>
+					</select>
+				</div>
+				<div class="col-1">
+					<img src="icons/search.png" @click="carregarNomeOuPlaca()" class="icon-search">
+				</div>
+
 			</div>
 
-			<table>
+			<table style="overflow-x:auto;">
 				<thead>
 					<tr>
-						<th>Id</th>
-						<th>Modelo</th>
-						<th>Placa do veículo</th>
-						<th>Tipo</th>
-						<th>Cor</th>
+						
+						<th>Nome</th>
+						<th>CPF</th>
+						<th>CNH</th>
+						<th>Data Venc.</th>
 						<th>Disponibilidade</th>
 
 						<th>Editar</th>
@@ -151,27 +203,25 @@
 					</tr>
 				</thead>
 
-				<tbody class="semBorda">
+				<tbody class="semBorda" >
+
+					<tr v-if="dado.disponibilidade !== 6" v-for="dado in dados" >
+						
+						<td>{{ dado.nome }} </td>
+						<td>{{ dado.cpf }} </td>
+						<td>{{ dado.cnh }} </td>
+						<td>{{ dado.venc_cnh }} </td>
+
+						<td v-if="dado.disponibilidade === true">Disponível</td>
+						<td v-if="dado.disponibilidade === false">Indisponível</td>
 
 
-					<tr v-if="dado.disponibilidade !== 6" v-for="dado in dados">
-						<td>{{ dado.id }}  </td>
-						<td>{{ dado.nome }}  </td>
-						<td>{{ dado.placa }}  </td>
 
-						<td v-if="dado.tipo === 1"> Moto </td>
-						<td v-if="dado.tipo === 2"> Carro </td>
-						<td v-if="dado.tipo === 3"> Caminhão </td>
-						<td v-if="dado.tipo === 4"> Van </td>
+						<td> <img src="icons/editar.png" class="tbIcon" @click="editarMotorista(dado.id)"></td>
+						<td  v-if="dado.disponibilidade === true"> <img src="icons/excluir.png" class="tbIcon" @click="excluirMotorista(dado.id)"
+								onclick="setTimeout(vueMotorista.carregarMotoristas, 750);"> </td>
 
-						<td>{{ dado.cor }} </td>
-
-						<td v-if="dado.disponibilidade === 1">Disponível</td>
-						<td v-if="dado.disponibilidade === 2">Indisponível</td>
-						<td v-if="dado.disponibilidade === 3">Alugado</td>
-
-						<td> <img src="icons/editar.png" class="tbIcon" @click="editarVeiculo(dado.id)"></td>
-						<td> <img src="icons/excluir.png" class="tbIcon" @click="excluirVeiculo(dado.id)" onclick="setTimeout(vueVeiculos.carregarVeiculos, 250);">  </td>
+						<td v-if="dado.disponibilidade === false"> <img src="icons/excluir.png" style="opacity: 0.5; width: 20px; margin: 2px;" class=""> </td>
 					</tr>
 
 				</tbody>
@@ -179,7 +229,9 @@
 		</div>
 
 	</div>
-	<script type="text/javascript" src="scripts/VeiculosPage.js"></script>
+	<script type="text/javascript" src="scripts/MotoristaPage.js"></script>
+	<script type="text/javascript" src="scripts/loginUser.js"></script>
 
 </body>
+
 </html>

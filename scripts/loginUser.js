@@ -12,6 +12,7 @@ var vueLogin = new Vue({
         
         if(!dado){
             console.log("Não possui esse usuário")
+            alert('usuario inválido')
         }else{ // Conseguiu logar
             
             localStorage.setItem("userSession",'')
@@ -28,7 +29,11 @@ var vueLogin = new Vue({
 
 
         }) 
+      },
+      deslogar:function() {
+        localStorage.setItem("userSession",'')
+        location.href = "tela_login.html"
       }
   }
   })
-  
+

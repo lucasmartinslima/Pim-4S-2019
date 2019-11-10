@@ -1,119 +1,165 @@
-var vueVeiculos = new Vue({
-  el: '#vueVeiculos',
+var vueMotorista = new Vue({
+  el: '#vueMotorista',
   data: {
-    //dados: null,    // AO USAR A API DESCOMENTAR ESSA LINHA
+    dados: null,    // AO USAR A API DESCOMENTAR ESSA LINHA
     selecao: '',
-    dadosVeiculo: {
+    dadosMotorista: {
       nome: null,
-      tipo: null,
-      placa: null,
-      cor: null,
-      disponibilidade: 1
+      cpf: null,
+      cnh: null,
+      venc_cnh: null,
+      cel: null,
+      disponibilidade: true
     },
-    
-//Array de objeto para teste, caso não tenha a api funcionando, caso tenha a api favor descomentar 'dados' de cima
-    dados: [
-    {id: 1, nome: 'Carro 1',tipo: 1,placa: 'null',cor: 'cinza',disponibilidade: 1},
-    {id: 2, nome: 'Carro 2',tipo: 1,placa: 'null',cor: 'cinza',disponibilidade: 1},
-    {id: 3, nome: 'Carro 3',tipo: 1,placa: 'null',cor: 'cinza',disponibilidade: 1},
-    {id: 4, nome: 'Carro 4',tipo: 1,placa: 'null',cor: 'cinza',disponibilidade: 1},
-    {id: 4, nome: 'Carro 4',tipo: 1,placa: 'null',cor: 'cinza',disponibilidade: 1},
-    {id: 4, nome: 'Carro 4',tipo: 1,placa: 'null',cor: 'cinza',disponibilidade: 1},
-    {id: 4, nome: 'Carro 4',tipo: 1,placa: 'null',cor: 'cinza',disponibilidade: 1}],
-
-    modalTitle: 'Registrar'
+    userSession: {
+      nome: null,
+      email: null,
+      cel: null
+    },
+    modalTitle: 'Registrar',
+    inputBusca: null,
+    selectBusca: true,
+    vm : this
 
   },
   methods: {
 
-    carregarVeiculos: function(){
+    carregarNomeOuPlaca: function () {
 
-      $.get("http://localhost:5050/api/veiculos", function(dado){
-        vueVeiculos.dados = dado;
-        console.log(dado)
-      })  
+      loadOn()
+      if (this.inputBusca && this.selectBusca != 4) {
+        $.get("http://localhost:5050/api/motoristas/?nome=" + this.inputBusca + "&cpf=" + this.inputBusca + "&disp=" + this.selectBusca, function (dado) {
+          vueMotorista.dados = dado;
+          console.log(dado)
+        }).done(() => { loadOff() })
+      } else if (this.selectBusca != 4) {
+        $.get("http://localhost:5050/api/motoristas/disp?disp=" + this.selectBusca, function (dado) {
+          vueMotorista.dados = dado;
+          console.log(dado)
+        }).done(() => { loadOff() })
+      } else if (this.inputBusca && this.selectBusca == 4) {
+        $.get("http://localhost:5050/api/motoristas/nomeCpf?nome=" + this.inputBusca + "&placa=" + this.inputBusca, function (dado) {
+          vueMotorista.dados = dado;
+          console.log(dado)
+        }).done(() => { loadOff() })
+      } else if (this.selectBusca == 4) {
+        inicializar()
+      }
+
+
     },
 
-    editarVeiculo: function(idEditar){
+    carregarMotoristas: function () {
 
+      loadOn()
+      $.get("http://localhost:5050/api/motoristas", function (dado) {
 
-      var veiculoEditar =null;
+        vueMotorista.dados = dado;
+        console.log(dado)
+      }).done(() => { loadOff() })
+
+    },
+
+    editarMotorista: function (idEditar) {
+
+      var motoristaEditar = null;
       console.log(idEditar)
-      for(i=0;i<5;i++){
-        if(this.dados[i].id == idEditar){
-          veiculoEditar = this.dados[i]
+      for (i = 0; i < this.dados.length; i++) {
+        if (this.dados[i].id == idEditar) {
+          motoristaEditar = this.dados[i]
 
-          console.log(veiculoEditar)
+          console.log(motoristaEditar)
 
-          this.dadosVeiculo.id = veiculoEditar.id;
-          this.dadosVeiculo.nome = veiculoEditar.nome;
-          this.dadosVeiculo.tipo = veiculoEditar.tipo;
-          this.dadosVeiculo.placa = veiculoEditar.placa;
-          this.dadosVeiculo.cor = veiculoEditar.cor;
+          this.dadosMotorista.id = motoristaEditar.id;
+          this.dadosMotorista.nome = motoristaEditar.nome;
+          this.dadosMotorista.cpf = motoristaEditar.cpf;
+          this.dadosMotorista.cel = motoristaEditar.cel;
+          this.dadosMotorista.cnh = motoristaEditar.cnh;
+          this.dadosMotorista.venc_cnh = motoristaEditar.venc_cnh;
 
           openModal()
           break;
         }
       }
-      $.ajax({
-       type: "PUT",
-       dataType: "json",
-       url: "http://localhost:5050/api/veiculo",
-       contentType: "application/json",
-       data: JSON.stringify(this.dadosVeiculo),
-       success: function(data, textStatus){
-         console.log("Veiculo excluido")
-       }
-     });
-    },
-
-    salvarVeiculo: function(){
-
-      this.dadosVeiculo.tipo = Number(this.dadosVeiculo.tipo);
 
       $.ajax({
-        type: "POST",
+        type: "PUT",
         dataType: "json",
-        url: "http://localhost:5050/api/veiculo",
+        url: "http://localhost:5050/api/motorista",
         contentType: "application/json",
-        data: JSON.stringify(this.dadosVeiculo),
-        success: function(data, textStatus){
-         console.log("Veiculo adicionado"+ this.dadosVeiculo)
-       }
-     }); 
+        data: JSON.stringify(this.dadosMotorista),
+        success: function (data, textStatus) {
+          console.log("Veiculo editado")
+        }
+      });
+    },
 
-      this.dadosVeiculo.nome = null
-      this.dadosVeiculo.tipo = null
-      this.dadosVeiculo.placa = null
-      this.dadosVeiculo.cor = null
-      this.dadosVeiculo.disponibilidade = 1
+    salvarMotorista: function () {
+
+      loadOn()
+
+      if (cpf(this.dadosMotorista.cpf) == false) {
+
+        alert('CPF INVÁLIDO! FAVOR REGISTRAR UM CPF VÁLIDO.')
+        var cpfInput = document.getElementById('cpf')
+        cpfInput.focus()
+
+        loadOff();
+      } else {
+
+        this.dadosMotorista.tipo = Number(this.dadosMotorista.tipo);
+
+        $.ajax({
+          type: "POST",
+          dataType: "json",
+          url: "http://localhost:5050/api/motorista",
+          contentType: "application/json",
+          data: JSON.stringify(this.dadosMotorista),
+          success: function (data, textStatus) {
+            console.log("Veiculo adicionado" + this.dadosMotorista)
+          }
+        }).done(() => { loadOff(); inicializar(); }).fail(() => { alert("Item não adicionado, favor verificar a sua conexão!") });
+
+        this.dadosMotorista.nome = null
+        this.dadosMotorista.cnh = null
+        this.dadosMotorista.cpf = null
+        this.dadosMotorista.cel = null
+        this.dadosMotorista.venc_cnh = null
+        this.dadosMotorista.disponibilidade = 1
+
+      }
+
+
 
     },
 
-    excluirVeiculo: function(idExcluir){
-     var veiculoExcluir =null;
-     console.log(idExcluir)
-     for(i=0;i<5;i++){
-      if(this.dados[i].id == idExcluir){
-        veiculoExcluir = this.dados[i]
-        break;
+    excluirMotorista: function (idExcluir) {
+      loadOn()
+      var motoristaExcluir = null;
+      console.log(idExcluir)
+      for (i = 0; i < this.dados.length; i++) {
+        if (this.dados[i].id == idExcluir) {
+          motoristaExcluir = this.dados[i]
+          console.log(motoristaExcluir)
+          break;
+        }
       }
+      $.ajax({
+        type: "DELETE",
+        dataType: "json",
+        url: "http://localhost:5050/api/motorista",
+        contentType: "application/json",
+        data: JSON.stringify(motoristaExcluir),
+        success: function (data, textStatus) {
+          console.log("Motista excluido")
+        
+        }
+      }).done( );
     }
-    $.ajax({
-      type: "DELETE",
-      dataType: "json",
-      url: "http://localhost:5050/api/veiculo",
-      contentType: "application/json",
-      data: JSON.stringify(veiculoExcluir),
-      success: function(data, textStatus){
-        console.log("Veiculo excluido")
-      }
-    });
   }
-}
 })
 
-function closeModal(){
+function closeModal() {
   var modal = document.getElementById('modal')
   modal.style.visibility = "hidden";
 
@@ -121,16 +167,16 @@ function closeModal(){
   backModal.style.visibility = "hidden";
 
 
-      vueVeiculos.dadosVeiculo.nome = null
-      vueVeiculos.dadosVeiculo.tipo = null
-      vueVeiculos.dadosVeiculo.placa = null
-      vueVeiculos.dadosVeiculo.cor = null
-      vueVeiculos.dadosVeiculo.disponibilidade = 1
+  vueMotorista.dadosMotorista.nome = null
+  vueMotorista.dadosMotorista.tipo = null
+  vueMotorista.dadosMotorista.placa = null
+  vueMotorista.dadosMotorista.cor = null
+  vueMotorista.dadosMotorista.disponibilidade = 1
 
 
 }
 
-function openModal(){
+function openModal() {
   var modal = document.getElementById('modal')
   modal.style.visibility = "visible";
 
@@ -138,7 +184,26 @@ function openModal(){
   backModal.style.visibility = "visible";
 }
 
-function inicializar(){
+function inicializar() {
   closeModal()
-  vueVeiculos.carregarVeiculos()
+  vueMotorista.carregarMotoristas()
+
+  var nomeUsuario = document.getElementById("nomeUsuario")
+
+
+  if (localStorage.getItem("userSession")) {
+    sessionObj = JSON.parse(localStorage.getItem("userSession"))
+
+    vueMotorista.userSession.nome = sessionObj.nome
+    vueMotorista.userSession.email = sessionObj.email
+    vueMotorista.userSession.cel = sessionObj.cel
+    vueMotorista.userSession.cpf = sessionObj.cpf
+
+    nomeUsuario.innerHTML = vueMotorista.userSession.nome
+
+  } else {
+    console.log("não existe nada")
+  }
+
 }
+

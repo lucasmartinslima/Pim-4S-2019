@@ -72,10 +72,10 @@ a{
 	text-align: center;
 	background-color: #e9e7e8;
 	height: 49.87px;
-}.acc{
-	margin-top: 15px;
+	margin-top:0px;
+}.logout-icon:hover{
+cursor: pointer;
 }
-
 
 .lg{
 	list-style: none;
