@@ -15,7 +15,7 @@ public interface VeiculoRepository extends JpaRepository<Veiculo, Long>{
 
 	Veiculo findById(long id);
 
-    @Query("FROM Veiculo v WHERE v.nome= :nome AND v.disponibilidade = :disponibilidade")
+    @Query("FROM Veiculo v WHERE v.nome like :nome% AND v.disponibilidade = :disponibilidade")
 	Veiculo findByNomeAndDisponibilidade(String nome, int disponibilidade);
     
     @Query("FROM Veiculo v WHERE v.nome like :nome% OR v.placa like :placa% AND v.disponibilidade = :disponibilidade")

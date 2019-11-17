@@ -10,71 +10,72 @@ var vueVeiculos = new Vue({
       cor: null,
       disponibilidade: 1
     },
-    userSession:{
+    userSession: {
       nome: null,
       email: null,
       cel: null
     },
-    
-//Array de objeto para teste, caso não tenha a api funcionando, caso tenha a api favor descomentar 'dados' de cima
- /*   dados: [
-    {id: 1, nome: 'Carro 1',tipo: 1,placa: 'null',cor: 'cinza',disponibilidade: 1},
-    {id: 2, nome: 'Carro 2',tipo: 1,placa: 'null',cor: 'cinza',disponibilidade: 1},
-    {id: 3, nome: 'Carro 3',tipo: 1,placa: 'null',cor: 'cinza',disponibilidade: 1},
-    {id: 4, nome: 'Carro 4',tipo: 1,placa: 'null',cor: 'cinza',disponibilidade: 1},
-    {id: 4, nome: 'Carro 4',tipo: 1,placa: 'null',cor: 'cinza',disponibilidade: 1},
-    {id: 4, nome: 'Carro 4',tipo: 1,placa: 'null',cor: 'cinza',disponibilidade: 1},
-    {id: 4, nome: 'Carro 4',tipo: 1,placa: 'null',cor: 'cinza',disponibilidade: 1}],
-*/
+
+    //Array de objeto para teste, caso não tenha a api funcionando, caso tenha a api favor descomentar 'dados' de cima
+    /*   dados: [
+       {id: 1, nome: 'Carro 1',tipo: 1,placa: 'null',cor: 'cinza',disponibilidade: 1},
+       {id: 2, nome: 'Carro 2',tipo: 1,placa: 'null',cor: 'cinza',disponibilidade: 1},
+       {id: 3, nome: 'Carro 3',tipo: 1,placa: 'null',cor: 'cinza',disponibilidade: 1},
+       {id: 4, nome: 'Carro 4',tipo: 1,placa: 'null',cor: 'cinza',disponibilidade: 1},
+       {id: 4, nome: 'Carro 4',tipo: 1,placa: 'null',cor: 'cinza',disponibilidade: 1},
+       {id: 4, nome: 'Carro 4',tipo: 1,placa: 'null',cor: 'cinza',disponibilidade: 1},
+       {id: 4, nome: 'Carro 4',tipo: 1,placa: 'null',cor: 'cinza',disponibilidade: 1}],
+   */
     modalTitle: 'Registrar',
     inputBusca: null,
-    selectBusca: 1
+    selectBusca: 4
 
   },
   methods: {
 
-    carregarNomeOuPlaca: function(){
-     
-loadOn()
-      if(this.inputBusca && this.selectBusca != 4){
-        $.get("http://localhost:5050/api/veiculos/?nome="+this.inputBusca+"&placa="+this.inputBusca+"&disp="+this.selectBusca, function(dado){        
-          vueVeiculos.dados = dado;
-          console.log(dado)
-        }).done(()=>{loadOff()})
-      }else if(this.selectBusca != 4){
-        $.get("http://localhost:5050/api/veiculos/disp?disp="+Number(this.selectBusca), function(dado){        
-          vueVeiculos.dados = dado;
-          console.log(dado)
-        }).done(()=>{loadOff()})
-      }else if(this.inputBusca && this.selectBusca == 4){
-        $.get("http://localhost:5050/api/veiculos/nomePlaca?nome="+this.inputBusca+"&placa="+this.inputBusca, function(dado){        
-          vueVeiculos.dados = dado;
-          console.log(dado)
-        }).done(()=>{loadOff()})
-      }else if(this.selectBusca == 4){
-        inicializar()
-      }
-      
-      
-    },
-
-    carregarVeiculos: function(){
+    carregarNomeOuPlaca: function () {
 
       loadOn()
-      $.get("http://localhost:5050/api/veiculos", function(dado){
-        
-        vueVeiculos.dados = dado;
-        console.log(dado)
-      }).done(()=>{loadOff()})
-    
+      if (this.inputBusca && this.selectBusca != 4) {
+        $.get("http://localhost:5050/api/veiculos/?nome=" + this.inputBusca + "&placa=" + this.inputBusca + "&disp=" + this.selectBusca, function (dado) {
+          vueVeiculos.dados = dado;
+          console.log(dado)
+        }).done(() => { loadOff() })
+      }
+      else if (this.selectBusca != 4) {
+        $.get("http://localhost:5050/api/veiculos/disp?disp=" + Number(this.selectBusca), function (dado) {
+          vueVeiculos.dados = dado;
+          console.log(dado)
+        }).done(() => { loadOff() })
+      } else if (this.inputBusca && this.selectBusca == 4) {
+        $.get("http://localhost:5050/api/veiculos/nomePlaca?nome=" + this.inputBusca + "&placa=" + this.inputBusca, function (dado) {
+          vueVeiculos.dados = dado;
+          console.log(dado)
+        }).done(() => { loadOff() })
+      } else if (this.selectBusca == 4) {
+        inicializar()
+      }
+
+
     },
 
-    editarVeiculo: function(idEditar){
-  
-      var veiculoEditar =null;
+    carregarVeiculos: function () {
+
+      loadOn()
+      $.get("http://localhost:5050/api/veiculos", function (dado) {
+
+        vueVeiculos.dados = dado;
+        console.log(dado)
+      }).done(() => { loadOff() })
+
+    },
+
+    editarVeiculo: function (idEditar) {
+
+      var veiculoEditar = null;
       console.log(idEditar)
-      for(i=0;i< this.dados.length;i++){
-        if(this.dados[i].id == idEditar){
+      for (i = 0; i < this.dados.length; i++) {
+        if (this.dados[i].id == idEditar) {
           veiculoEditar = this.dados[i]
 
           console.log(veiculoEditar)
@@ -89,23 +90,23 @@ loadOn()
           break;
         }
       }
-   
+
       $.ajax({
-       type: "PUT",
-       dataType: "json",
-       url: "http://localhost:5050/api/veiculo",
-       contentType: "application/json",
-       data: JSON.stringify(this.dadosVeiculo),
-       success: function(data, textStatus){
-         console.log("Veiculo editado")
-       }
-     });
+        type: "PUT",
+        dataType: "json",
+        url: "http://localhost:5050/api/veiculo",
+        contentType: "application/json",
+        data: JSON.stringify(this.dadosVeiculo),
+        success: function (data, textStatus) {
+          console.log("Veiculo editado")
+        }
+      });
     },
 
-    salvarVeiculo: function(){
+    salvarVeiculo: function () {
 
       loadOn()
-      
+
       this.dadosVeiculo.tipo = Number(this.dadosVeiculo.tipo);
 
       $.ajax({
@@ -114,10 +115,10 @@ loadOn()
         url: "http://localhost:5050/api/veiculo",
         contentType: "application/json",
         data: JSON.stringify(this.dadosVeiculo),
-        success: function(data, textStatus){
-         console.log("Veiculo adicionado"+ this.dadosVeiculo)
-       }
-     }).done(()=>{   loadOff(); inicializar();}).fail(()=>{ alert("Item não adicionado, favor verificar a sua conexão!")}); 
+        success: function (data, textStatus) {
+          console.log("Veiculo adicionado" + this.dadosVeiculo)
+        }
+      }).done(() => { loadOff(); inicializar(); }).fail(() => { alert("Item não adicionado, favor verificar a sua conexão!") });
 
       this.dadosVeiculo.nome = null
       this.dadosVeiculo.tipo = null
@@ -127,32 +128,32 @@ loadOn()
 
     },
 
-    excluirVeiculo: function(idExcluir){
+    excluirVeiculo: function (idExcluir) {
       loadOn()
-     var veiculoExcluir =null;
-     console.log(idExcluir)
-     for(i=0;i<this.dados.length;i++){
-      if(this.dados[i].id == idExcluir){
-        veiculoExcluir = this.dados[i]
-        console.log(veiculoExcluir)
-        break;
+      var veiculoExcluir = null;
+      console.log(idExcluir)
+      for (i = 0; i < this.dados.length; i++) {
+        if (this.dados[i].id == idExcluir) {
+          veiculoExcluir = this.dados[i]
+          console.log(veiculoExcluir)
+          break;
+        }
       }
+      $.ajax({
+        type: "DELETE",
+        dataType: "json",
+        url: "http://localhost:5050/api/veiculo",
+        contentType: "application/json",
+        data: JSON.stringify(veiculoExcluir),
+        success: function (data, textStatus) {
+          console.log("Veiculo excluido")
+        }
+      });
     }
-    $.ajax({
-      type: "DELETE",
-      dataType: "json",
-      url: "http://localhost:5050/api/veiculo",
-      contentType: "application/json",
-      data: JSON.stringify(veiculoExcluir),
-      success: function(data, textStatus){
-        console.log("Veiculo excluido")
-      }
-    });
   }
-}
 })
 
-function closeModal(){
+function closeModal() {
   var modal = document.getElementById('modal')
   modal.style.visibility = "hidden";
 
@@ -160,16 +161,16 @@ function closeModal(){
   backModal.style.visibility = "hidden";
 
 
-      vueVeiculos.dadosVeiculo.nome = null
-      vueVeiculos.dadosVeiculo.tipo = null
-      vueVeiculos.dadosVeiculo.placa = null
-      vueVeiculos.dadosVeiculo.cor = null
-      vueVeiculos.dadosVeiculo.disponibilidade = 1
+  vueVeiculos.dadosVeiculo.nome = null
+  vueVeiculos.dadosVeiculo.tipo = null
+  vueVeiculos.dadosVeiculo.placa = null
+  vueVeiculos.dadosVeiculo.cor = null
+  vueVeiculos.dadosVeiculo.disponibilidade = 1
 
 
 }
 
-function openModal(){
+function openModal() {
   var modal = document.getElementById('modal')
   modal.style.visibility = "visible";
 
@@ -177,26 +178,26 @@ function openModal(){
   backModal.style.visibility = "visible";
 }
 
-function inicializar(){
+function inicializar() {
   closeModal()
   vueVeiculos.carregarVeiculos()
 
-var nomeUsuario = document.getElementById("nomeUsuario")
+  var nomeUsuario = document.getElementById("nomeUsuario")
 
 
-if(localStorage.getItem("userSession")){
-  sessionObj = JSON.parse(localStorage.getItem("userSession"))
+  if (localStorage.getItem("userSession")) {
+    sessionObj = JSON.parse(localStorage.getItem("userSession"))
 
-  vueVeiculos.userSession.nome = sessionObj.nome
-  vueVeiculos.userSession.email = sessionObj.email
-  vueVeiculos.userSession.cel = sessionObj.cel
-  vueVeiculos.userSession.cpf= sessionObj.cpf
-  
-  nomeUsuario.innerHTML = vueVeiculos.userSession.nome
+    vueVeiculos.userSession.nome = sessionObj.nome
+    vueVeiculos.userSession.email = sessionObj.email
+    vueVeiculos.userSession.cel = sessionObj.cel
+    vueVeiculos.userSession.cpf = sessionObj.cpf
 
-}else{
-  console.log("não existe nada")
-}
+    nomeUsuario.innerHTML = vueVeiculos.userSession.nome
+
+  } else {
+    console.log("não existe nada")
+  }
 
 }
 

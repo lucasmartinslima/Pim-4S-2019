@@ -19,7 +19,7 @@ var vueMotorista = new Vue({
     modalTitle: 'Registrar',
     inputBusca: null,
     selectBusca: 4,
-    vm : this
+    vm: this
 
   },
   methods: {
@@ -153,9 +153,9 @@ var vueMotorista = new Vue({
         data: JSON.stringify(motoristaExcluir),
         success: function (data, textStatus) {
           console.log("Motista excluido")
-        
+            inicializar()
         }
-      }).done( );
+      }).done();
     }
   }
 })

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Frotas.apirest.models.Usuario;
+import com.Frotas.apirest.models.Veiculo;
 import com.Frotas.apirest.repository.UsuarioRepository;
 
 @RestController
@@ -32,6 +33,20 @@ public class UsuarioResources {
 		
         return usuarioRepository.findByEmailAndSenha(email, senha);  
 	}	
-	
+	@CrossOrigin
+	@GetMapping("/users") 
+	public List<Usuario> login(){
+		
+        return usuarioRepository.findAll();  
+	}
 
+	
+	@CrossOrigin 
+	@PostMapping("/login")
+	public Usuario loginUser(@RequestBody Usuario user) {
+		return usuarioRepository.save(user);
+	}
+	
+	
+	
 }

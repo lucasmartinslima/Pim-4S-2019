@@ -89,7 +89,7 @@
 
 		<div class="col-4 menu mobile">
 			<div><img class="img-menu" src="icons/rodovia.png"></div>
-			<a href="#"> Viagens</a>
+			<a href="pageViagem.html"> Viagens</a>
 		</div>
 	</div>
 
@@ -219,7 +219,7 @@
 
 						<td> <img src="icons/editar.png" class="tbIcon" @click="editarMotorista(dado.id)"></td>
 						<td  v-if="dado.disponibilidade === 1"> <img src="icons/excluir.png" class="tbIcon" @click="excluirMotorista(dado.id)"
-								onclick="setTimeout(vueMotorista.carregarMotoristas, 750);"> </td>
+								onclick="setTimeout(vueMotorista.carregarMotoristas, 780);"> </td>
 
 						<td v-if="dado.disponibilidade === 0"> <img src="icons/excluir.png" style="opacity: 0.5; width: 20px; margin: 2px;" class=""> </td>
 					</tr>

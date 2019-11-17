@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">1001 Frotas</string>
+
+    <string name="txt_login">Login</string>
+    <string name="txt_username">Usuário</string>
+    <string name="txt_senha">Senha</string>
+    <string name="txt_entrar">Entrar</string>
+</resources>
