@@ -409,6 +409,10 @@ function inicializar() {
   vueViagem.carregarTodosVeiculos()
   vueViagem.carregarTodosMotoristas()
 
+  setTimeout(closeMobileMenu, 500)
+  setTimeout(setTamFonte, 1000)
+
+
   var nomeUsuario = document.getElementById("nomeUsuario")
 
 

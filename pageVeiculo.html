@@ -46,6 +46,7 @@
 
 		<div class="col-2" style=" text-align: center;">
 			<img src="img/logo.png" class="lg-img">
+			<img onclick="openMobileMenu()" class="menu-icon" src="icons/menu.png">
 		</div>
 
 		<div class="col-3">
@@ -54,14 +55,14 @@
 
 		<div class="col-2 account">
 
-			<div class="row">
+			<div class="row acessibilidade">
 				<div class="col-6">
 					<div class="row" style="width: 100%; margin-top: -8px; float: right;">
 						<div class="col-6" style="font-size: 23px; color:#4f4f4f;" onclick="diminuirFonte()">
-							<p style=" float: right; margin-bottom: 13px;">a-</p>
+							<p style=" float: right; margin-bottom: 13px; cursor: pointer">a-</p>
 						</div>
 						<div class="col-6" style="font-size: 23px; color:#4f4f4f;" onclick="aumentarFonte()">
-							<p style=" float: left;  margin-bottom: 7px;">A+</p>
+							<p style=" float: left;  margin-bottom: 7px; cursor: pointer">A+</p>
 						</div>
 					</div>
 				</div>
@@ -81,18 +82,18 @@
 
 	<div class="row" style="z-index: 4;">
 		<!--=================== MENU ===================== -->
-		<div class="col-4 menu mobile" style="border-bottom: solid 4px #2f7dcc;">
+		<div onclick="redirect(1)" class="col-4 menu mobile" style="border-bottom: solid 4px #2f7dcc;">
 			<div><img class="img-menu" src="icons/car.png"></div>
-			<a href="#"> Veículos </a>
+			<a href="pageVeiculo.html"> Veículos </a>
 		</div>
 
-		<div class="col-4 menu mobile">
+		<div onclick="redirect(2)" class="col-4 menu mobile">
 			<div><img class="img-menu" src="icons/people.png"></div>
 			<a href="pageMotorista.html"> Motoristas</a>
 		</div>
 
 
-		<div class="col-4 menu mobile">
+		<div onclick="redirect(3)" class="col-4 menu mobile">
 			<div><img class="img-menu" src="icons/rodovia.png"></div>
 			<a href="pageViagem.html"> Viagens</a>
 		</div>
@@ -101,22 +102,22 @@
 	<div class="menu-mobile" id="menu-mobile">
 		<!-- Menu mobile-->
 		<div>
-			<img src="icons/close-menu.png" style="width: 65px; float: right;" onclick="closeMobileMenu()">
+			<img src="icons/close-menu.png" style="width: 45px; float: right;" onclick="closeMobileMenu()">
 		</div>
-		<div class="col-4 menu " style="border-bottom: solid 4px #2f7dcc;">
+		<div onclick="redirect(1)" class="col-4 menu " style="border-bottom: solid 4px #2f7dcc;">
 			<div><img class="img-menu" src="icons/car.png"></div>
-			<a href="#"> Veículos </a>
+			<a href="pageVeiculo.html"> Veículos </a>
 		</div>
 
-		<div class="col-4 menu ">
+		<div onclick="redirect(2)" class="col-4 menu ">
 			<div><img class="img-menu" src="icons/people.png"></div>
 			<a href="pageMotorista.html"> Motoristas</a>
 		</div>
 
 
-		<div class="col-4 menu ">
+		<div onclick="redirect(3)" class="col-4 menu ">
 			<div><img class="img-menu" src="icons/rodovia.png"></div>
-			<a href="#"> Viagens</a>
+			<a href="pageViagem.html"> Viagens</a>
 		</div>
 
 	</div>
@@ -197,7 +198,7 @@
 						<option value=4>Todos</option>
 						<option selected value=1>Disponível</option>
 						<option value=2>Indisponível</option>
-						<option value=3>Alugado</option>
+		
 					</select>
 				</div>
 				<div class="col-1">

@@ -18,6 +18,15 @@ html,body{ margin: 0; padding: 0;
 	background-color: white;
 	height: 100%;
 }
+
+
+.acessibilidade{
+	display: none;
+		}
+
+
+
+
 }
 @media screen and (min-width: 768px) {
 	.menu-mobile{
@@ -28,6 +37,12 @@ html,body{ margin: 0; padding: 0;
 		margin-top: -1800px;
 		background-color: cornflowerblue;
 		height: 100%;
+	}
+
+
+	
+.menu-icon{
+display: none;
 	}
  }
 
@@ -89,4 +104,16 @@ cursor: pointer;
 
 h1{
 	font-size: 14px;
+}
+
+
+
+
+
+.menu-icon{
+width: 46px;
+float: left;
+padding-left: 7px;
+position: relative;
+
 }

@@ -192,6 +192,8 @@ function inicializar() {
 
 
   setTimeout(setTamFonte, 1000)
+  setTimeout(closeMobileMenu, 500)
+
 
   var nomeUsuario = document.getElementById("nomeUsuario")
 
