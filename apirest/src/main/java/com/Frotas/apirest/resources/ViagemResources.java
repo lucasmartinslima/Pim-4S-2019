@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Frotas.apirest.repository.ViagemRepository;
+import com.Frotas.apirest.models.Veiculo;
 import com.Frotas.apirest.models.Viagem;
 
 
@@ -32,6 +34,8 @@ public class ViagemResources {
 	}
 	
 	//Listar apenas 1 viagem -- metodo GET
+
+	@CrossOrigin 
 	@GetMapping("/viagens/{id}")
 	public Viagem listarViagemUnico(@PathVariable(value="id")long id){
 		return viagemRepository.findById(id);
@@ -46,15 +50,28 @@ public class ViagemResources {
 	}
 	
 	//DELETA VIAGEM -- metodo DELETE
+
+	@CrossOrigin 
 	@DeleteMapping("/viagem")
 	public void deletaViagem(@RequestBody Viagem viagem) {
 		viagemRepository.delete(viagem);
 	}
 	
 	//ATUALIZAR VIAGEM  -- metodo PUT
+
+	@CrossOrigin 
 	@PutMapping("/viagem")
 	public Viagem atualizaViagem(@RequestBody Viagem viagem) {
 	   return viagemRepository.save(viagem);
 	}
+	
+
+	@CrossOrigin 
+	@GetMapping("/viagens/status")
+	public List<Viagem> listarViagensAberto(@RequestParam(value="cep")int cep,@RequestParam(value="disp")String disp){
+		return  viagemRepository.findByCepAndDisponibilidade(cep,disp);
+	}
+	
+	
 	
 }

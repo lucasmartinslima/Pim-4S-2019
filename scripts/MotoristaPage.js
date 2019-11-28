@@ -121,6 +121,7 @@ var vueMotorista = new Vue({
           }
         }).done(() => { loadOff(); inicializar(); }).fail(() => { alert("Item não adicionado, favor verificar a sua conexão!") });
 
+        this.dadosMotorista.id = null
         this.dadosMotorista.nome = null
         this.dadosMotorista.cnh = null
         this.dadosMotorista.cpf = null
@@ -153,7 +154,7 @@ var vueMotorista = new Vue({
         data: JSON.stringify(motoristaExcluir),
         success: function (data, textStatus) {
           console.log("Motista excluido")
-            inicializar()
+          inicializar()
         }
       }).done();
     }
@@ -188,6 +189,9 @@ function openModal() {
 function inicializar() {
   closeModal()
   vueMotorista.carregarMotoristas()
+
+
+  setTimeout(setTamFonte, 1000)
 
   var nomeUsuario = document.getElementById("nomeUsuario")
 

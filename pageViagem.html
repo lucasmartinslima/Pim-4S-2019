@@ -20,13 +20,14 @@
 	<script type="text/javascript" src="scripts/loading.js"></script>
 	<script type="text/javascript" src="scripts/menu.js"></script>
 	<script type="text/javascript" src="scripts/validacao.js"></script>
+	<script type="text/javascript" src="scripts/acessibilidade.js"></script>
 
 	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 </head>
 
-<body onload="inicializar(); validator();">
+<body onload="inicializar(); validator(); setTimeout(setTamFonte, 1000)">
 
 	<div id="load" class="loading">
 		<img class="gif" src="icons/caminhao.gif"><br>
@@ -49,8 +50,13 @@
 			<div class="col-2 account">
 				<div class="row">
 					<div class="col-6">
-						<div class="" style="width: auto;">
-							<p id="nomeUsuario" style="margin-top: 16px; float: right;"> </p>
+						<div class="row" style="width: 100%; margin-top: -8px; float: right;">
+							<div class="col-6" style="font-size: 23px; color:#4f4f4f;" onclick="diminuirFonte()"> 
+								<p style=" float: right; margin-bottom: 13px;">a-</p>
+							 </div>
+							<div class="col-6" style="font-size: 23px; color:#4f4f4f;" onclick="aumentarFonte()">
+								<p style=" float: left;  margin-bottom: 7px;">A+</p>
+							</div>
 						</div>
 					</div>
 					<div class="row">
@@ -120,7 +126,7 @@
 				<div class="reg">
 					<form class="regVeiculo">
 						<label>Cep:</label>
-						<input type="text" placeholder="Ex: 15990526, 15990524" v-model="dadosViagem.nome">
+						<input type="text" placeholder="Ex: 15990526, 15990524" v-model="dadosViagem.cep">
 
 						<br><label>Motorista:</label>
 						<select v-model="idMotoristaSelect">
@@ -130,20 +136,30 @@
 							</option>
 						</select>
 
+						<br><label>Veículo:</label>
+						<select v-model="idVeiculoSelect">
+							<option v-for="dadoVeiculoDisp in dadoVeiculoDisps" v-bind:value="dadoVeiculoDisp.id">
+								{{ dadoVeiculoDisp.nome}} - {{ dadoVeiculoDisp.cor }}
+							</option>
+						</select>
 
 
+						<br><label>Data inicio:</label>
+						<input style="width: 78px;" id="diaInicio" type="number" placeholder=""
+							v-model="dadosViagem.diaInicio">
+						<input style="width: 78px;" id="diaInicio" type="number" placeholder=""
+							v-model="dadosViagem.mesInicio">
+						<input style="width: 78px;" id="diaInicio" type="number" placeholder=""
+							v-model="dadosViagem.anoInicio">
 
+						<label>Data fim:</label>
+						<input style="width: 78px;" id="diaInicio" type="number" placeholder=""
+							v-model="dadosViagem.diaFim">
+						<input style="width: 78px;" id="diaInicio" type="number" placeholder=""
+							v-model="dadosViagem.mesFim">
+						<input style="width: 78px;" id="diaInicio" type="number" placeholder=""
+							v-model="dadosViagem.anoFim">
 
-
-
-						<br><label>CPF:</label>
-						<input id="cpf" type="text" placeholder="Ex: 42285166887" v-model="dadosViagem.cpf">
-
-						<br><label>CNH:</label>
-						<input type="text" placeholder="Ex: 458756987" v-model="dadosViagem.cnh">
-
-						<br><label>Venc cnh:</label>
-						<input type="date" placeholder="" v-model="dadosViagem.venc_cnh">
 
 						<br>
 						<div class="btn-register" @click="salvarViagem();" onclick="">
@@ -163,20 +179,20 @@
 							<h4 class="col-12" style="text-align: center;">REGISTRAR</h4>
 						</div>
 					</div>
-					<div class="col-6">
+				<!--	<div class="col-6">
 						<input v-model="inputBusca" placeholder="Buscar por nome ou CPF" class="busca-bar" id="busca">
-					</div>
+					</div>-->
 
-					<div class="col-1">
+					<div class="col-3 text-rigth">
 						<select v-model="selectBusca" class="filtro">
 							<option value=4>Todos</option>
-							<option value=1>Disponível</option>
-							<option value=0>Indisponível</option>
+							<option value=1>Em aberto</option>
+							<option value=2>Finalizada</option>
 						</select>
 					</div>
-					<div class="col-1">
+				<!--	<div class="col-1">
 						<img src="icons/search.png" @click="carregarNomeOuPlaca()" class="icon-search">
-					</div>
+					</div>-->
 
 				</div>
 
@@ -186,12 +202,13 @@
 
 							<th>Cep</th>
 							<th>Motorista</th>
+							<th>Veículo</th>
 							<th>Data Início</th>
 							<th>Data Final</th>
 							<th>Status</th>
 
 
-							<th>Editar</th>
+							<th>Finalizar</th>
 							<th>Excluir</th>
 
 						</tr>
@@ -199,12 +216,18 @@
 
 					<tbody class="semBorda">
 
-						<tr v-if="dado.disponibilidade !== 6" v-for="dado in dados">
+						<tr v-if="dado.statusViagem === selectBusca || selectBusca >= 4 " v-for="dado in dados" >
 
-							
+
 							<td>{{ dado.cep }} </td>
-							
-							<td >{{ dado.idMotorista }} </td>
+
+							<td v-for="mt in motoristasAtt" v-if="mt.id === dado.idMotorista"> 	
+									{{mt.nome}}
+							</td>
+
+							<td v-for="vc in veiculosAtt" v-if="vc.id === dado.idVeiculo"> 	
+									{{vc.nome}}
+							</td>
 
 
 							<td>{{ dado.diaInicio }}/{{dado.mesInicio}}/{{ dado.anoInicio}} </td>
@@ -213,16 +236,23 @@
 							<td v-if="dado.statusViagem === '2'">Finalizada</td>
 							<td v-if="dado.statusViagem === '1'">Em aberto</td>
 							<td v-if="dado.statusViagem === '0'">Iniciada</td>
-							
 
-							<td> <img src="icons/editar.png" class="tbIcon" @click="editarViagem(dado.id)"></td>
+
+							<td  v-if="dado.statusViagem === '1'"> <img src="icons/finalizar.png" class="tbIcon"
+									@click="finalizarViagem(dado.id, dado.idVeiculo, dado.idMotorista)"></td>
+
+									<td  v-if="dado.statusViagem === '2'"> <img src="icons/finalizar.png" class="tbIcon"
+										style="opacity: 0.5; width: 20px; margin: 2px; cursor: auto;"></td>
+	
+
+
 							<td v-if="dado.statusViagem === '1'"> <img src="icons/excluir.png" class="tbIcon"
-									@click="excluirViagem(dado.id)"
+									@click="excluirViagem(dado.id, dado.idVeiculo, dado.idMotorista)"
 									onclick="setTimeout(vueViagem.carregarViagens, 750);"> </td>
 
 							<td v-if="dado.statusViagem === '0' || dado.statusViagem === '2'"> <img
 									src="icons/excluir.png" style="opacity: 0.5; width: 20px; margin: 2px;" class="">
-							</td>
+							</td >
 						</tr>
 
 					</tbody>

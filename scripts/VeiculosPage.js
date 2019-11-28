@@ -120,6 +120,7 @@ var vueVeiculos = new Vue({
         }
       }).done(() => { loadOff(); inicializar(); }).fail(() => { alert("Item não adicionado, favor verificar a sua conexão!") });
 
+      this.dadosVeiculo.id = null
       this.dadosVeiculo.nome = null
       this.dadosVeiculo.tipo = null
       this.dadosVeiculo.placa = null
@@ -181,6 +182,8 @@ function openModal() {
 function inicializar() {
   closeModal()
   vueVeiculos.carregarVeiculos()
+
+setTimeout(setTamFonte, 1000)
 
   var nomeUsuario = document.getElementById("nomeUsuario")
 

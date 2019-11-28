@@ -20,6 +20,7 @@
 	<script type="text/javascript" src="scripts/loading.js"></script>
 	<script type="text/javascript" src="scripts/menu.js"></script>
 	<script type="text/javascript" src="scripts/validacao.js"></script>
+	<script type="text/javascript" src="scripts/acessibilidade.js"></script>
 
 	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -27,7 +28,7 @@
 
 </head>
 
-<body onload="inicializar(); validator();">
+<body onload="inicializar(); validator(); setTimeout(setTamFonte, 1500)">
 
 	<div id="load" class="loading">
 		<img class="gif" src="icons/caminhao.gif"><br>
@@ -56,8 +57,13 @@
 
 			<div class="row">
 				<div class="col-6">
-					<div class="" style="width: auto;">
-						<p id="nomeUsuario" style="margin-top: 16px; float: right;"> </p>
+					<div class="row" style="width: 100%; margin-top: -8px; float: right;">
+						<div class="col-6" style="font-size: 23px; color:#4f4f4f;" onclick="diminuirFonte()">
+							<p style=" float: right; margin-bottom: 13px;">a-</p>
+						</div>
+						<div class="col-6" style="font-size: 23px; color:#4f4f4f;" onclick="aumentarFonte()">
+							<p style=" float: left;  margin-bottom: 7px;">A+</p>
+						</div>
 					</div>
 				</div>
 				<div class="row">
@@ -65,11 +71,8 @@
 						<img src="icons/logout.png" onclick="vueLogin.deslogar()" class="logout-icon"
 							style="width: 27px;  margin-top: 8px;">
 					</div>
-
-
 				</div>
 			</div>
-
 		</div>
 	</div>
 
@@ -190,7 +193,7 @@
 			<table style="overflow-x:auto;">
 				<thead>
 					<tr>
-						
+
 						<th>Nome</th>
 						<th>CPF</th>
 						<th>CNH</th>
@@ -203,10 +206,10 @@
 					</tr>
 				</thead>
 
-				<tbody class="semBorda" >
+				<tbody class="semBorda">
 
-					<tr v-if="dado.disponibilidade !== 6" v-for="dado in dados" >
-						
+					<tr v-if="dado.disponibilidade !== 6" v-for="dado in dados">
+
 						<td>{{ dado.nome }} </td>
 						<td>{{ dado.cpf }} </td>
 						<td>{{ dado.cnh }} </td>
@@ -217,11 +220,21 @@
 
 
 
-						<td> <img src="icons/editar.png" class="tbIcon" @click="editarMotorista(dado.id)"></td>
-						<td  v-if="dado.disponibilidade === 1"> <img src="icons/excluir.png" class="tbIcon" @click="excluirMotorista(dado.id)"
+						<td v-if="dado.disponibilidade === 1">
+							<img src="icons/editar.png" class="tbIcon" @click="editarMotorista(dado.id)">
+						</td>
+
+						<td v-if="dado.disponibilidade === 0">
+							 <img src="icons/editar.png" class="tbIcon" style="opacity: 0.5; width: 20px; margin: 2px; cursor: auto"></td>
+
+
+
+						<td v-if="dado.disponibilidade === 1"> <img src="icons/excluir.png" class="tbIcon"
+								@click="excluirMotorista(dado.id)"
 								onclick="setTimeout(vueMotorista.carregarMotoristas, 780);"> </td>
 
-						<td v-if="dado.disponibilidade === 0"> <img src="icons/excluir.png" style="opacity: 0.5; width: 20px; margin: 2px;" class=""> </td>
+						<td v-if="dado.disponibilidade === 0"> <img src="icons/excluir.png"
+								style="opacity: 0.5; width: 20px; margin: 2px;" class=""> </td>
 					</tr>
 
 				</tbody>

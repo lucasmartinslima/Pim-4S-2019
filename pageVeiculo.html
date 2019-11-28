@@ -19,6 +19,7 @@
 	<script type="text/javascript" src="scripts/sessionValidator.js"></script>
 	<script type="text/javascript" src="scripts/loading.js"></script>
 	<script type="text/javascript" src="scripts/menu.js"></script>
+	<script type="text/javascript" src="scripts/acessibilidade.js"></script>
 
 	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -26,7 +27,7 @@
 
 </head>
 
-<body onload="inicializar(); validator();">
+<body onload="inicializar(); validator(); setTimeout(setTamFonte, 1500);">
 
 	<div id="load" class="loading">
 		<img class="gif" src="icons/caminhao.gif"><br>
@@ -55,8 +56,13 @@
 
 			<div class="row">
 				<div class="col-6">
-					<div class="" style="width: auto;">
-						<p id="nomeUsuario" style="margin-top: 16px; float: right;"> </p>
+					<div class="row" style="width: 100%; margin-top: -8px; float: right;">
+						<div class="col-6" style="font-size: 23px; color:#4f4f4f;" onclick="diminuirFonte()">
+							<p style=" float: right; margin-bottom: 13px;">a-</p>
+						</div>
+						<div class="col-6" style="font-size: 23px; color:#4f4f4f;" onclick="aumentarFonte()">
+							<p style=" float: left;  margin-bottom: 7px;">A+</p>
+						</div>
 					</div>
 				</div>
 				<div class="row">
@@ -235,9 +241,22 @@
 						<td v-if="dado.disponibilidade === 2">Indisponível</td>
 						<td v-if="dado.disponibilidade === 3">Alugado</td>
 
-						<td> <img src="icons/editar.png" class="tbIcon" @click="editarVeiculo(dado.id)"></td>
-						<td> <img src="icons/excluir.png" class="tbIcon" @click="excluirVeiculo(dado.id)"
+						<td v-if="dado.disponibilidade === 1">
+							 <img src="icons/editar.png" class="tbIcon" @click="editarVeiculo(dado.id)">
+							</td>
+
+							<td v-if="dado.disponibilidade === 2"> 
+								<img src="icons/editar.png" class="tbIcon"
+								style="opacity: 0.5; width: 20px; margin: 2px; cursor: auto;"
+								></td>
+
+
+						<td v-if="dado.disponibilidade === 1"> <img src="icons/excluir.png" class="tbIcon"
+								@click="excluirVeiculo(dado.id)"
 								onclick="setTimeout(vueVeiculos.carregarVeiculos, 780);"> </td>
+
+						<td v-if="dado.disponibilidade === 2"> <img src="icons/excluir.png" class="tbIcon"
+								style="opacity: 0.5; width: 20px; margin: 2px; cursor: auto;"> </td>
 					</tr>
 
 				</tbody>
